@@ -13,4 +13,4 @@ import { OctaviaButtonComponent } from './button/button.component';
     CommonModule
   ]
 })
-export class LibModule { }
+export class OcatviaModule { }

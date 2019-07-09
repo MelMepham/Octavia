@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { LibModule } from "../lib/lib.module";
+import { OcatviaModule } from "../../ocatvia/ocatvia.module";
 
 @NgModule({
   declarations: [
@@ -10,7 +10,7 @@ import { LibModule } from "../lib/lib.module";
   ],
   imports: [
     BrowserModule,
-    LibModule
+    OcatviaModule
   ],
   providers: [],
   bootstrap: [AppComponent]
