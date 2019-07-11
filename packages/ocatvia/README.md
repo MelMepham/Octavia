@@ -1,12 +1,10 @@
-# Ocatvia
+# Octavia
 
-[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.5.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.
 
 ## Development server
 
-Run `npm start` for a dev server. Navigate to `http://localhost:4400/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 

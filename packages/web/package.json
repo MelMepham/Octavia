@@ -1,0 +1,19 @@
+{
+  "name": "web",
+  "version": "0.0.0",
+  "description": "Personal website",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve --port 4400",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
+  "author": "Mel Mepham",
+  "license": "ISC",
+  "private": true,
+  "dependencies": {
+    "@angular/router": "^8.1.0"
+  }
+}
