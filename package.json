@@ -11,7 +11,8 @@
   "homepage": "https://github.com/MelMepham/Octavia#readme",
   "private": true,
   "workspaces": [
-    "packages/web"
+    "projects/web",
+    "projects/octavia"
   ],
   "scripts": {
     "ng": "ng",
