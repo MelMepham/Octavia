@@ -11,7 +11,6 @@
   "homepage": "https://github.com/MelMepham/Octavia#readme",
   "private": true,
   "workspaces": [
-    "packages/ocatvia",
     "packages/web"
   ],
   "scripts": {
@@ -19,11 +18,7 @@
     "start": "yarn start:web",
     "start:web": "yarn workspace web run start",
     "start:oct": "yarn workspace octavia run start",
-    "build:oct": "yarn workspace octavia run build:elements",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "build:oct": "yarn workspace octavia run build"
   },
   "dependencies": {
     "@webcomponents/custom-elements": "^1.2.4",
@@ -59,8 +54,10 @@
     "karma-jasmine": "~1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
     "lerna": "^3.15.0",
+    "ng-packagr": "^5.1.0",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
+    "tsickle": "^0.35.0",
     "tslint": "~5.11.0",
     "typescript": "~3.4.5",
     "yarn": "1.9.4"

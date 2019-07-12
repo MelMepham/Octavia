@@ -1,0 +1,11 @@
+{
+  "name": "web",
+  "version": "0.0.0",
+  "description": "Personal website",
+  "scripts": {
+    "start": "ng serve --port 8400"
+  },
+  "dependencies": {
+    "@angular/router": "^8.1.0"
+  }
+}
