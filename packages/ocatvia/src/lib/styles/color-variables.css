@@ -1,0 +1,13 @@
+* {
+    --main-bg-color: pink;
+    --main-txt-color: blue; 
+    --main-padding: 15px; 
+  }
+
+  :root {
+      background-color: green;
+  }
+  div {
+    /* --main-bg-color: pink;  */
+    /* --main-bg-color: var(--main-txt-color); */
+    }
