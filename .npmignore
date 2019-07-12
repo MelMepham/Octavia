@@ -9,4 +9,7 @@ webpack.config.js
 *.test.cmd
 
 # do not need here
-src/
+packages/web
+dist
+angular.json
+package.json
