@@ -7,6 +7,6 @@
   },
   "dependencies": {
     "@angular/router": "^8.1.0",
-    "@mel/ocatvia": "../../PersonalProjects/Octavia/packages/ocatvia/src/lib"
+    "octavia": "1.0.1"
   }
 }

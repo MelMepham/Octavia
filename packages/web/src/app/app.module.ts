@@ -1,17 +1,16 @@
 // import { OcatviaButtonModule } from '../../../ocatvia/src/lib/button/button.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { OcatviaButtonModule } from '../../../ocatvia/src/public-api';
-
+import { OctaviaButtonComponent } from 'octavia/src/public-api';
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    OctaviaButtonComponent
   ],
   imports: [
-    BrowserModule,
-    OcatviaButtonModule
+    BrowserModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

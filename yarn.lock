@@ -1056,9 +1056,6 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
-"@mel/ocatvia@../../PersonalProjects/Octavia/packages/ocatvia/src/lib":
-  version "0.0.0"
-
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -6580,6 +6577,15 @@ obuf@^1.0.0, obuf@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/obuf/-/obuf-1.1.2.tgz#09bea3343d41859ebd446292d11c9d4db619084e"
   integrity sha512-PX1wu0AmAdPqOL1mWhqmlOd8kOIZQwGZw6rh7uby9fTc5lhaOWFLX3I6R1hrF9k3zUY40e6igsLGkDXK92LJNg==
+
+octavia@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/octavia/-/octavia-1.0.1.tgz#efae4bc195e1433995aca17e58a4eb5647a1bfb6"
+  integrity sha512-mWRT4D2rp4Q3cuHTptECzqY90OCPU2x4Hv3Rhm+Mu0U6ojngpKy7cUQ1GEqFqEP5hL8vZCCpx9iSDh9vdB/Jbg==
+  dependencies:
+    "@webcomponents/custom-elements" "^1.2.4"
+    document-register-element "^1.13.2"
+    ng-packagr "^5.3.0"
 
 octokit-pagination-methods@^1.1.0:
   version "1.1.0"
