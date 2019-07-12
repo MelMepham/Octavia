@@ -6,34 +6,34 @@
     "packageManager": "yarn"
   },
   "projects": {
-    "ocatvia": {
-      "root": "packages/ocatvia",
-      "sourceRoot": "packages/ocatvia/src",
+    "octavia": {
+      "root": "packages/octavia",
+      "sourceRoot": "packages/octavia/src",
       "projectType": "application",
-      "prefix": "ocatvia",
+      "prefix": "octavia",
       "schematics": {},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "packages/ocatvia/tsconfig.lib.json",
-            "project": "packages/ocatvia/src/ng-package.json"
+            "tsConfig": "packages/octavia/tsconfig.lib.json",
+            "project": "packages/octavia/src/ng-package.json"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "packages/ocatvia/src/src/test.ts",
-            "tsConfig": "packages/ocatvia/src/tsconfig.spec.json",
-            "karmaConfig": "packages/ocatvia/src/karma.conf.js"
+            "main": "packages/octavia/src/src/test.ts",
+            "tsConfig": "packages/octavia/src/tsconfig.spec.json",
+            "karmaConfig": "packages/octavia/src/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "packages/ocatvia/src/tsconfig.lib.json",
-              "packages/ocatvia/src/tsconfig.spec.json"
+              "packages/octavia/src/tsconfig.lib.json",
+              "packages/octavia/src/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

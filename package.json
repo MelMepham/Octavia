@@ -17,9 +17,9 @@
   "scripts": {
     "ng": "ng",
     "start": "yarn start:web",
-    "start:web": "yarn workspace @mel/web run start",
-    "start:oct": "yarn workspace @mel/ocatvia run start",
-    "build:oct": "yarn workspace @mel/ocatvia run build:elements",
+    "start:web": "yarn workspace web run start",
+    "start:oct": "yarn workspace octavia run start",
+    "build:oct": "yarn workspace octavia run build:elements",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
