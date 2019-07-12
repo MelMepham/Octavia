@@ -18,12 +18,12 @@ import { BrowserModule } from '@angular/platform-browser';
 })
 export class OcatviaModule implements DoBootstrap {
 
-  constructor (
+  constructor(
       private _injector: Injector
   ) {
   }
 
-  public ngDoBootstrap (): void {
+  public ngDoBootstrap(): void {
     const el = createCustomElement(OctaviaButtonComponent, { injector: this._injector });
     customElements.define('oct-button', el);
   }

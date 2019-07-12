@@ -17,14 +17,16 @@
   "scripts": {
     "ng": "ng",
     "start": "yarn start:web",
-    "start:web": "yarn workspace web start",
-    "start:oct": "yarn workspace ocatvia start",
+    "start:web": "yarn workspace @mel/web run start",
+    "start:oct": "yarn workspace @mel/ocatvia run start",
+    "build:oct": "yarn workspace @mel/ocatvia run build:elements",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
   "dependencies": {
+    "@webcomponents/custom-elements": "^1.2.4",
     "@angular/animations": "^8.1.0",
     "@angular/common": "^8.1.0",
     "@angular/compiler": "^8.1.0",
@@ -59,6 +61,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.4.5"
+    "typescript": "~3.4.5",
+    "yarn": "1.9.4"
   }
 }

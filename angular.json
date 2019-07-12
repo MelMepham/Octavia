@@ -7,7 +7,7 @@
       "root": "packages/ocatvia",
       "sourceRoot": "packages/ocatvia/src",
       "projectType": "application",
-      "prefix": "ui",
+      "prefix": "ocatvia",
       "schematics": {},
       "architect": {
         "build": {
@@ -15,6 +15,7 @@
           "options": {
             "outputPath": "dist/ocatvia",
             "index": "packages/ocatvia/src/index.html",
+            "main": "packages/ocatvia/src/main.ts",
             "polyfills": "packages/ocatvia/src/polyfills.ts",
             "tsConfig": "packages/ocatvia/src/tsconfig.app.json",
             "assets": [
@@ -24,7 +25,11 @@
             "styles": [
               "packages/ocatvia/src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              {
+                "input": "node_modules/document-register-element/build/document-register-element.js"
+              }
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {
@@ -102,34 +107,6 @@
         }
       }
     },
-    "ocatvia-e2e": {
-      "root": "e2e/",
-      "projectType": "application",
-      "prefix": "",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "packages/ocatvia/e2e/protractor.conf.js",
-            "devServerTarget": "ocatvia:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "ocatvia:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "packages/ocatvia/e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
     "web": {
       "root": "packages/web",
       "sourceRoot": "packages/web/src",
@@ -140,6 +117,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "scripts": [],
             "outputPath": "dist/web",
             "index": "packages/web/src/index.html",
             "main": "packages/web/src/main.ts",
@@ -152,7 +130,6 @@
             "styles": [
               "packages/web/src/styles.css"
             ],
-            "scripts": [],
             "es5BrowserSupport": true
           },
           "configurations": {
@@ -164,7 +141,7 @@
                 }
               ],
               "optimization": true,
-              "outputHashing": "all",
+              "outputHashing": "none",
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
@@ -231,6 +208,5 @@
       }
     }
   },
-
   "defaultProject": "web"
 }
