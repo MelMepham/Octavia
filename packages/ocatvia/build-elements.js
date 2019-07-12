@@ -3,10 +3,10 @@ const concat = require('concat');
 
 (async function build() {
     const files = [
-        '../../dist/web/runtime.js',
-        '../../dist/web/polyfills.js',
-        '../../dist/web/scripts.js',
-        '../../dist/web/main.js'
+        '../../dist/ocatvia/runtime.js',
+        '../../dist/ocatvia/polyfills.js',
+        '../../dist/ocatvia/scripts.js',
+        '../../dist/ocatvia/main.js'
     ];
 
     await fs.ensureDir('elements');
