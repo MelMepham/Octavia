@@ -1,6 +1,6 @@
 import { DoBootstrap, Injector, NgModule } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
-import { OctaviaButtonComponent } from './button/button.component';
+import { OctaviaButtonComponent } from './button.component';
 import { BrowserModule } from '@angular/platform-browser';
 
 
@@ -14,9 +14,12 @@ import { BrowserModule } from '@angular/platform-browser';
   ],
   entryComponents: [
     OctaviaButtonComponent
+  ],
+  exports: [
+    OctaviaButtonComponent
   ]
 })
-export class OcatviaModule implements DoBootstrap {
+export class OcatviaButtonModule implements DoBootstrap {
 
   constructor(
       private _injector: Injector

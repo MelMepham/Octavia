@@ -1,5 +1,7 @@
+// import { OcatviaButtonModule } from '../../../ocatvia/src/lib/button/button.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { OcatviaButtonModule } from '../../../ocatvia/src/public-api';
 
 import { AppComponent } from './app.component';
 
@@ -8,8 +10,10 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    OcatviaButtonModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 })

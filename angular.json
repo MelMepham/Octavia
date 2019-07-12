@@ -14,93 +14,25 @@
       "schematics": {},
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "outputPath": "dist/ocatvia",
-            "index": "packages/ocatvia/src/index.html",
-            "main": "packages/ocatvia/src/main.ts",
-            "polyfills": "packages/ocatvia/src/polyfills.ts",
-            "tsConfig": "packages/ocatvia/src/tsconfig.app.json",
-            "assets": [
-              "packages/ocatvia/src/favicon.ico",
-              "packages/ocatvia/src/assets"
-            ],
-            "styles": [
-              "packages/ocatvia/src/styles.css"
-            ],
-            "scripts": [
-              {
-                "input": "node_modules/document-register-element/build/document-register-element.js"
-              }
-            ],
-            "es5BrowserSupport": true
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "packages/ocatvia/src/environments/environment.ts",
-                  "with": "packages/ocatvia/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "ocatvia:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "ocatvia:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "ocatvia:build"
+            "tsConfig": "packages/ocatvia/tsconfig.lib.json",
+            "project": "packages/ocatvia/src/ng-package.json"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "packages/ocatvia/src/test.ts",
-            "polyfills": "packages/ocatvia/src/polyfills.ts",
+            "main": "packages/ocatvia/src/src/test.ts",
             "tsConfig": "packages/ocatvia/src/tsconfig.spec.json",
-            "karmaConfig": "packages/ocatvia/src/karma.conf.js",
-            "styles": [
-              "packages/ocatvia/src/styles.css"
-            ],
-            "scripts": [],
-            "assets": [
-              "packages/ocatvia/src/favicon.ico",
-              "packages/ocatvia/src/assets"
-            ]
+            "karmaConfig": "packages/ocatvia/src/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "packages/ocatvia/src/tsconfig.app.json",
+              "packages/ocatvia/src/tsconfig.lib.json",
               "packages/ocatvia/src/tsconfig.spec.json"
             ],
             "exclude": [

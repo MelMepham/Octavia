@@ -1,5 +1,16 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"],{
 
+/***/ "../../node_modules/raw-loader/index.js!../ocatvia/src/lib/button/button.component.html":
+/*!***********************************************************************************************************************!*\
+  !*** /Users/mmepham/PersonalProjects/Octavia/node_modules/raw-loader!../ocatvia/src/lib/button/button.component.html ***!
+  \***********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<button\n    class=\"color\">\n    <ng-content></ng-content>\n</button>\n"
+
+/***/ }),
+
 /***/ "../../node_modules/raw-loader/index.js!./src/app/app.component.html":
 /*!****************************************************************************************************!*\
   !*** /Users/mmepham/PersonalProjects/Octavia/node_modules/raw-loader!./src/app/app.component.html ***!
@@ -7,7 +18,129 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>\n  Website yo!\n</h1>\n<!--<oct-button>Hello</oct-button>-->\n\n"
+module.exports = "<h1>\n  Website yo!\n</h1>\n<app-oct-button>Hello</app-oct-button>\n\n"
+
+/***/ }),
+
+/***/ "../ocatvia/src/lib/button/button.component.css":
+/*!******************************************************!*\
+  !*** ../ocatvia/src/lib/button/button.component.css ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ":host {\n    background-color: red;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9saWIvYnV0dG9uL2J1dHRvbi5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0kscUJBQXFCO0FBQ3pCIiwiZmlsZSI6InNyYy9saWIvYnV0dG9uL2J1dHRvbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiOmhvc3Qge1xuICAgIGJhY2tncm91bmQtY29sb3I6IHJlZDtcbn0iXX0= */"
+
+/***/ }),
+
+/***/ "../ocatvia/src/lib/button/button.component.ts":
+/*!*****************************************************!*\
+  !*** ../ocatvia/src/lib/button/button.component.ts ***!
+  \*****************************************************/
+/*! exports provided: OctaviaButtonComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OctaviaButtonComponent", function() { return OctaviaButtonComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
+
+
+var OctaviaButtonComponent = /** @class */ (function () {
+    function OctaviaButtonComponent() {
+    }
+    OctaviaButtonComponent.prototype.ngOnInit = function () {
+    };
+    OctaviaButtonComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-oct-button',
+            template: __webpack_require__(/*! raw-loader!./button.component.html */ "../../node_modules/raw-loader/index.js!../ocatvia/src/lib/button/button.component.html"),
+            encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewEncapsulation"].ShadowDom,
+            styles: [__webpack_require__(/*! ./button.component.css */ "../ocatvia/src/lib/button/button.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], OctaviaButtonComponent);
+    return OctaviaButtonComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../ocatvia/src/lib/button/button.module.ts":
+/*!**************************************************!*\
+  !*** ../ocatvia/src/lib/button/button.module.ts ***!
+  \**************************************************/
+/*! exports provided: OcatviaButtonModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OcatviaButtonModule", function() { return OcatviaButtonModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_elements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/elements */ "../../node_modules/@angular/elements/fesm5/elements.js");
+/* harmony import */ var _button_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./button.component */ "../ocatvia/src/lib/button/button.component.ts");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/platform-browser */ "../../node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+
+
+
+
+
+var OcatviaButtonModule = /** @class */ (function () {
+    function OcatviaButtonModule(_injector) {
+        this._injector = _injector;
+    }
+    OcatviaButtonModule.prototype.ngDoBootstrap = function () {
+        var el = Object(_angular_elements__WEBPACK_IMPORTED_MODULE_2__["createCustomElement"])(_button_component__WEBPACK_IMPORTED_MODULE_3__["OctaviaButtonComponent"], { injector: this._injector });
+        customElements.define('oct-button', el);
+    };
+    OcatviaButtonModule.ctorParameters = function () { return [
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injector"] }
+    ]; };
+    OcatviaButtonModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [
+                _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["BrowserModule"]
+            ],
+            declarations: [
+                _button_component__WEBPACK_IMPORTED_MODULE_3__["OctaviaButtonComponent"]
+            ],
+            entryComponents: [
+                _button_component__WEBPACK_IMPORTED_MODULE_3__["OctaviaButtonComponent"]
+            ],
+            exports: [
+                _button_component__WEBPACK_IMPORTED_MODULE_3__["OctaviaButtonComponent"]
+            ]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injector"]])
+    ], OcatviaButtonModule);
+    return OcatviaButtonModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "../ocatvia/src/public-api.ts":
+/*!************************************!*\
+  !*** ../ocatvia/src/public-api.ts ***!
+  \************************************/
+/*! exports provided: OctaviaButtonComponent, OcatviaButtonModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _lib_button_button_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/button/button.component */ "../ocatvia/src/lib/button/button.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "OctaviaButtonComponent", function() { return _lib_button_button_component__WEBPACK_IMPORTED_MODULE_0__["OctaviaButtonComponent"]; });
+
+/* harmony import */ var _lib_button_button_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/button/button.module */ "../ocatvia/src/lib/button/button.module.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "OcatviaButtonModule", function() { return _lib_button_button_module__WEBPACK_IMPORTED_MODULE_1__["OcatviaButtonModule"]; });
+
+
+
+
 
 /***/ }),
 
@@ -90,7 +223,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../../node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "../../node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _ocatvia_src_public_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../ocatvia/src/public-api */ "../ocatvia/src/public-api.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+
+// import { OcatviaButtonModule } from '../../../ocatvia/src/lib/button/button.module';
 
 
 
@@ -101,13 +237,15 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]
             ],
             imports: [
-                _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"]
+                _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
+                _ocatvia_src_public_api__WEBPACK_IMPORTED_MODULE_3__["OcatviaButtonModule"]
             ],
+            schemas: [_angular_core__WEBPACK_IMPORTED_MODULE_2__["CUSTOM_ELEMENTS_SCHEMA"]],
             providers: [],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
