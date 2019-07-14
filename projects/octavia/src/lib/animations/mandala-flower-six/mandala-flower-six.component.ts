@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit, Input, OnChanges, HostListener} from '@angular/core';
 import * as sketch from 'p5';
 import { MandalaFlowerSixColorEnum } from "./mandala-flower-six.enum";
 
@@ -7,10 +7,22 @@ import { MandalaFlowerSixColorEnum } from "./mandala-flower-six.enum";
   templateUrl: './mandala-flower-six.component.html',
   styleUrls: ['./mandala-flower-six.component.css']
 })
-export class MandalaFlowerSixComponent implements OnInit {
+export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
+
+  @Input() canvasSize: number;
 
   private _sketch;
   private _c = MandalaFlowerSixColorEnum;
+  ngOnChanges(): void {
+    console.log("canvas size", this._sketch.canvas.style.width)
+    if( this._sketch.canvas.style.width !== this.canvasSize) {
+      this.destroyCanvas();
+      this.createCanvas();
+
+    }
+
+
+  }
 
   ngOnInit(): void {
     this.createCanvas();
@@ -33,7 +45,6 @@ export class MandalaFlowerSixComponent implements OnInit {
   public mouseReleased = () => this._sketch.loop();
 
   public mandala = function (p: any) {
-
     let lastPrint = 0;
     let i = 0;
 
@@ -49,12 +60,11 @@ export class MandalaFlowerSixComponent implements OnInit {
     let outerTripleCirclesBigX, outerTripleCirclesBigC, outerTripleCirlcesMidC, outerTripleCirclesMidSmlX, outerTripleCirclesSmlC;
     let bigCircleC;
     let trianglex1, triangley1, trianglex3;
+    let canvasSize = this.canvasSize;
 
     // setup vars
-    let canvasSize;
-
     function calculateSizes() {
-      canvasSize = p.windowWidth / 2;
+
       p.resizeCanvas(canvasSize, canvasSize);
 
       petal = canvasSize / 16;
@@ -97,8 +107,8 @@ export class MandalaFlowerSixComponent implements OnInit {
 
     // setup
     p.setup = () => {
+      // console.log(canvasSize)
       p.noLoop();
-      canvasSize = p.windowWidth / 1.5;
       p.createCanvas(canvasSize, canvasSize).parent('forest-mandala');
       p.angleMode(p.DEGREES);
       p.background(this._c.green100);
