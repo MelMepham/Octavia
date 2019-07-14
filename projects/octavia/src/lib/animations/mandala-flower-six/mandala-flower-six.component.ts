@@ -1,4 +1,4 @@
-import {Component, OnDestroy, ElementRef, AfterViewInit, OnInit, Input, OnChanges, HostListener, Renderer, HostBinding} from '@angular/core';
+import {Component, OnDestroy,  OnInit, Input, HostListener } from '@angular/core';
 import * as sketch from 'p5';
 import { MandalaFlowerSixColorEnum } from "./mandala-flower-six.enum";
 
@@ -7,11 +7,13 @@ import { MandalaFlowerSixColorEnum } from "./mandala-flower-six.enum";
   templateUrl: './mandala-flower-six.component.html',
   styleUrls: ['./mandala-flower-six.component.scss']
 })
-export class MandalaFlowerSixComponent implements AfterViewInit, OnDestroy {
+export class MandalaFlowerSixComponent implements OnInit, OnDestroy {
 
   @Input() canvasSize: number;
 
   @HostListener('window:resize', ['$event'])
+
+  // TODO: make this a conditional to only execute if the canvas window is different to this.canvasSize
     private onResize() :void {
     let canvas = document.querySelector("canvas")
     canvas.style.setProperty('--width', this.canvasSize + "px");
@@ -22,7 +24,7 @@ export class MandalaFlowerSixComponent implements AfterViewInit, OnDestroy {
   private _sketch;
   private _c = MandalaFlowerSixColorEnum;
 
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
     this.createCanvas();
 
     let canvas = document.querySelector("div")
@@ -36,19 +38,11 @@ export class MandalaFlowerSixComponent implements AfterViewInit, OnDestroy {
 
   private createCanvas(): void {
     this._sketch = new sketch(this.mandala.bind(this));
-    this.updateCanvas();
-  }
-
-  private updateCanvas() {
   }
 
   private destroyCanvas(): void {
     this._sketch.noCanvas();
   }
-
-  public mousePressed = () => this._sketch.noLoop();
-
-  public mouseReleased = () => this._sketch.loop();
 
   public mandala = function (p: any) {
     let lastPrint = 0;
@@ -70,8 +64,6 @@ export class MandalaFlowerSixComponent implements AfterViewInit, OnDestroy {
 
     // setup vars
     function calculateSizes() {
-
-      p.resizeCanvas(canvasSize, canvasSize);
 
       petal = canvasSize / 16;
       Atrianglex1 = canvasSize / 33;
@@ -295,9 +287,5 @@ export class MandalaFlowerSixComponent implements AfterViewInit, OnDestroy {
       }
       p.pop();
     };
-
-    function flashColorChange(colorA, colorB, time) {
-      p.fill( p.lerpColor(p.color(colorA), p.color(colorB), (p.sin((p.millis() % time) /10.0)) * 1.3) )
-    }
   };
 }
