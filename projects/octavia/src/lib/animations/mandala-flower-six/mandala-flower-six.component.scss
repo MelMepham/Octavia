@@ -1,0 +1,16 @@
+@import url('../../styles/env.scss');
+
+Oct-mandala-flower-six:host {
+    display: block;
+}
+
+.Oct-mandala-flower-six__animation-container {
+    --width: 0px;
+    ::ng-deep .p5Canvas {
+        width: var(--width) !important;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+

@@ -1,30 +1,37 @@
-import {Component, OnDestroy, OnInit, Input, OnChanges, HostListener} from '@angular/core';
+import {Component, OnDestroy, ElementRef, AfterViewInit, OnInit, Input, OnChanges, HostListener, Renderer, HostBinding} from '@angular/core';
 import * as sketch from 'p5';
 import { MandalaFlowerSixColorEnum } from "./mandala-flower-six.enum";
 
 @Component({
   selector: 'Oct-mandala-flower-six',
   templateUrl: './mandala-flower-six.component.html',
-  styleUrls: ['./mandala-flower-six.component.css']
+  styleUrls: ['./mandala-flower-six.component.scss']
 })
-export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
+export class MandalaFlowerSixComponent implements AfterViewInit, OnDestroy, OnChanges {
 
-  @Input() canvasSize: number;
+  constructor(private renderer: Renderer, private el: ElementRef,) {
+  }
+  @Input() canvasSize: any;
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+
+    this.canvasSize = window.innerWidth;
+    let canvas = document.querySelector("canvas")
+    canvas.style.setProperty('--width', this.canvasSize);
+  }
+
 
   private _sketch;
   private _c = MandalaFlowerSixColorEnum;
   ngOnChanges(): void {
-    console.log("canvas size", this._sketch.canvas.style.width)
-    if( this._sketch.canvas.style.width !== this.canvasSize) {
-      this.destroyCanvas();
-      this.createCanvas();
-
-    }
-
 
   }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+    let canvas = document.querySelector(".Oct-mandala-flower-six__animation-container")
+    canvas.style.setProperty('--width', this.canvasSize);
+
     this.createCanvas();
   }
 
@@ -108,7 +115,6 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
     // setup
     p.setup = () => {
       // console.log(canvasSize)
-      p.noLoop();
       p.createCanvas(canvasSize, canvasSize).parent('forest-mandala');
       p.angleMode(p.DEGREES);
       p.background(this._c.green100);

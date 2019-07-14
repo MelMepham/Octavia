@@ -27,7 +27,7 @@
               "projects/web/src/assets"
             ],
             "styles": [
-              "projects/web/src/styles.css"
+              "projects/web/src/styles.scss"
             ],
             "es5BrowserSupport": true
           },
@@ -83,7 +83,7 @@
             "tsConfig": "projects/web/src/tsconfig.spec.json",
             "karmaConfig": "projects/web/src/karma.conf.js",
             "styles": [
-              "projects/web/src/styles.css"
+              "projects/web/src/styles.scss"
             ],
             "scripts": [],
             "assets": [
@@ -142,5 +142,10 @@
       }
     }
   },
-  "defaultProject": "web"
+  "defaultProject": "web",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
