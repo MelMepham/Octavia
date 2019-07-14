@@ -1,0 +1,13 @@
+@import url('../../styles/env.css');
+
+Oct-mandala-flower-six:host {
+    display: block;
+}
+
+.Oct-mandala-flower-six__animation-container {
+::ng-deep canvas {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+}

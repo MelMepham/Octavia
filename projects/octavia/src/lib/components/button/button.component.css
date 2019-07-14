@@ -1,4 +1,4 @@
-@import url('../../styles/colors.css');
+@import url('../../styles/env.css');
 
 .oct-button__primary {
     background-color: var(--btn-primary);
