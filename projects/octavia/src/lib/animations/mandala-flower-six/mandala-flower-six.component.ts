@@ -7,32 +7,27 @@ import { MandalaFlowerSixColorEnum } from "./mandala-flower-six.enum";
   templateUrl: './mandala-flower-six.component.html',
   styleUrls: ['./mandala-flower-six.component.scss']
 })
-export class MandalaFlowerSixComponent implements AfterViewInit, OnDestroy, OnChanges {
+export class MandalaFlowerSixComponent implements AfterViewInit, OnDestroy {
 
-  constructor(private renderer: Renderer, private el: ElementRef,) {
-  }
-  @Input() canvasSize: any;
+  @Input() canvasSize: number;
 
   @HostListener('window:resize', ['$event'])
-  onResize() {
-
-    this.canvasSize = window.innerWidth;
+    private onResize() :void {
     let canvas = document.querySelector("canvas")
-    canvas.style.setProperty('--width', this.canvasSize);
+    canvas.style.setProperty('--width', this.canvasSize + "px");
+    canvas.style.setProperty('--height', this.canvasSize + "px");
   }
 
 
   private _sketch;
   private _c = MandalaFlowerSixColorEnum;
-  ngOnChanges(): void {
-
-  }
 
   ngAfterViewInit(): void {
-    let canvas = document.querySelector(".Oct-mandala-flower-six__animation-container")
-    canvas.style.setProperty('--width', this.canvasSize);
-
     this.createCanvas();
+
+    let canvas = document.querySelector("div")
+    canvas.style.setProperty('--width', this.canvasSize + "px");
+    canvas.style.setProperty('--height', this.canvasSize + "px");
   }
 
   ngOnDestroy(): void {
@@ -41,6 +36,10 @@ export class MandalaFlowerSixComponent implements AfterViewInit, OnDestroy, OnCh
 
   private createCanvas(): void {
     this._sketch = new sketch(this.mandala.bind(this));
+    this.updateCanvas();
+  }
+
+  private updateCanvas() {
   }
 
   private destroyCanvas(): void {
@@ -108,17 +107,13 @@ export class MandalaFlowerSixComponent implements AfterViewInit, OnDestroy, OnCh
 
     }
 
-    window.onresize = function() {
-      calculateSizes();
-    };
-
     // setup
     p.setup = () => {
-      // console.log(canvasSize)
       p.createCanvas(canvasSize, canvasSize).parent('forest-mandala');
       p.angleMode(p.DEGREES);
       p.background(this._c.green100);
       calculateSizes();
+
 
       lastPrint = p.second() - 3;
 
@@ -128,13 +123,6 @@ export class MandalaFlowerSixComponent implements AfterViewInit, OnDestroy, OnCh
 
     // lets actually draw something now.
     p.draw = () => {
-      const timeElapsed = p.second() - lastPrint;
-
-      if (timeElapsed > 3) {
-        i++;
-        console.log(i);
-        lastPrint = p.second();
-      }
 
       p.background(this._c.green100);
 

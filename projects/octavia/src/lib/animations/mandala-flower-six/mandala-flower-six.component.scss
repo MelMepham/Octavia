@@ -5,9 +5,12 @@ Oct-mandala-flower-six:host {
 }
 
 .Oct-mandala-flower-six__animation-container {
-    --width: 0px;
+    --width: 0;
+    --height: 0;
+
     ::ng-deep .p5Canvas {
         width: var(--width) !important;
+        height: var(--height) !important;
         display: block;
         margin-left: auto;
         margin-right: auto;
