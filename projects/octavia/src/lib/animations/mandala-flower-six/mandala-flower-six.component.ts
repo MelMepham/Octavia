@@ -22,6 +22,7 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
         : document.querySelector("div")
 
     if (canvas.style.width != this.canvasSize.toString() + "px") {
+      console.log('hello')
       canvas.style.setProperty('--width', this.canvasSize + "px");
       canvas.style.setProperty('--height', this.canvasSize + "px");
     }
@@ -54,6 +55,22 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   public mandala = function (p: any) {
+
+    let canvasSize = this.canvasSize;
+
+    if(canvasSize === undefined) {
+
+      let newSize = window.innerWidth
+      let canvas = document.querySelector("canvas")
+          ? document.querySelector("canvas")
+          : document.querySelector("div")
+
+        canvas.style.setProperty('--width', newSize + "px");
+        canvas.style.setProperty('--height', newSize + "px");
+        canvasSize = newSize;
+    }
+
+
     let isAnimated = this.isAnimated;
     let lastPrint = 0;
     let i = 0;
@@ -70,7 +87,6 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
     let outerTripleCirclesBigX, outerTripleCirclesBigC, outerTripleCirlcesMidC, outerTripleCirclesMidSmlX, outerTripleCirclesSmlC;
     let bigCircleC;
     let trianglex1, triangley1, trianglex3;
-    let canvasSize = this.canvasSize;
 
     // setup vars
     function calculateSizes() {
@@ -116,7 +132,6 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
       p.background(this._c.green100);
       calculateSizes();
       lastPrint = p.second() - 3;
-
     };
     p.center = { x: 0, y: 0 };
 
