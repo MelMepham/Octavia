@@ -1,4 +1,4 @@
-import {Component, OnDestroy,  OnInit, Input, HostListener } from '@angular/core';
+import {Component, OnDestroy, OnInit, Input, HostListener, OnChanges } from '@angular/core';
 import * as sketch from 'p5';
 import { MandalaFlowerSixColorEnum } from "./mandala-flower-six.enum";
 
@@ -7,37 +7,43 @@ import { MandalaFlowerSixColorEnum } from "./mandala-flower-six.enum";
   templateUrl: './mandala-flower-six.component.html',
   styleUrls: ['./mandala-flower-six.component.scss']
 })
-export class MandalaFlowerSixComponent implements OnInit, OnDestroy {
+export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
 
-  @Input() canvasSize: number;
+  private _canvasSize: number;
 
-  @HostListener('window:resize', ['$event'])
+  get canvasSize(): number { return this._canvasSize }
 
-    private onResize() :void {
-    let canvas = document.querySelector("canvas");
+  @Input()
+  set canvasSize(val: number) {
+      this._canvasSize = val;
 
-    if(canvas.style.width !== this.canvasSize.toString()) {
+    let canvas = document.querySelector("canvas")
+        ? document.querySelector("canvas")
+        : document.querySelector("div")
+
+    if (canvas.style.width != this.canvasSize.toString() + "px") {
       canvas.style.setProperty('--width', this.canvasSize + "px");
       canvas.style.setProperty('--height', this.canvasSize + "px");
     }
   }
-
+  @Input() isAnimated: boolean;
 
   private _sketch;
   private _c = MandalaFlowerSixColorEnum;
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
+    this.isAnimated = this.isAnimated ? this.isAnimated : true;
+
     this.createCanvas();
-
-      let canvas = document.querySelector("div");
-      canvas.style.setProperty('--width', this.canvasSize + "px");
-      canvas.style.setProperty('--height', this.canvasSize + "px");
-
   }
 
-  ngOnDestroy(): void {
+  public ngOnChanges() {
+  }
+
+  public ngOnDestroy(): void {
     this.destroyCanvas();
   }
+
 
   private createCanvas(): void {
     this._sketch = new sketch(this.mandala.bind(this));
@@ -48,6 +54,7 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy {
   }
 
   public mandala = function (p: any) {
+    let isAnimated = this.isAnimated;
     let lastPrint = 0;
     let i = 0;
 
