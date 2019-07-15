@@ -13,11 +13,13 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy {
 
   @HostListener('window:resize', ['$event'])
 
-  // TODO: make this a conditional to only execute if the canvas window is different to this.canvasSize
     private onResize() :void {
-    let canvas = document.querySelector("canvas")
-    canvas.style.setProperty('--width', this.canvasSize + "px");
-    canvas.style.setProperty('--height', this.canvasSize + "px");
+    let canvas = document.querySelector("canvas");
+
+    if(canvas.style.width !== this.canvasSize.toString()) {
+      canvas.style.setProperty('--width', this.canvasSize + "px");
+      canvas.style.setProperty('--height', this.canvasSize + "px");
+    }
   }
 
 
@@ -27,9 +29,10 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.createCanvas();
 
-    let canvas = document.querySelector("div")
-    canvas.style.setProperty('--width', this.canvasSize + "px");
-    canvas.style.setProperty('--height', this.canvasSize + "px");
+      let canvas = document.querySelector("div");
+      canvas.style.setProperty('--width', this.canvasSize + "px");
+      canvas.style.setProperty('--height', this.canvasSize + "px");
+
   }
 
   ngOnDestroy(): void {
@@ -105,10 +108,7 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy {
       p.angleMode(p.DEGREES);
       p.background(this._c.green100);
       calculateSizes();
-
-
       lastPrint = p.second() - 3;
-
 
     };
     p.center = { x: 0, y: 0 };
