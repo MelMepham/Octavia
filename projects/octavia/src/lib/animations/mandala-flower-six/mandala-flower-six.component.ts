@@ -15,6 +15,7 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
 
   @Input()
   set canvasSize(val: number) {
+    //TODO I should throttle this so it doesn't reload every time a pixel changes. RXJS here we come!
       this._canvasSize = val;
 
     let canvas = document.querySelector("canvas")
@@ -22,7 +23,6 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
         : document.querySelector("div")
 
     if (canvas.style.width != this.canvasSize.toString() + "px") {
-      console.log('hello')
       canvas.style.setProperty('--width', this.canvasSize + "px");
       canvas.style.setProperty('--height', this.canvasSize + "px");
     }
@@ -87,6 +87,9 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
     let outerTripleCirclesBigX, outerTripleCirclesBigC, outerTripleCirlcesMidC, outerTripleCirclesMidSmlX, outerTripleCirclesSmlC;
     let bigCircleC;
     let trianglex1, triangley1, trianglex3;
+    var waterDropletY2, waterDropletY1, waterDropletX2;
+    var waterDropletCircleC,  waterDropletCircleY;
+    var waterDropletLittleY2, waterDropletLittleY1, waterDropletLittleX2;
 
     // setup vars
     function calculateSizes() {
@@ -123,6 +126,15 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
       triangley1 = canvasSize / 20;
       trianglex3 = canvasSize / 10;
 
+      waterDropletY2 = canvasSize / 3;
+      waterDropletY1 = canvasSize / 4;
+      waterDropletX2 = canvasSize / 12;
+      waterDropletCircleC = canvasSize / 120;
+      waterDropletCircleY = canvasSize / 3.45;
+      waterDropletLittleY2 = canvasSize / 4.5;
+      waterDropletLittleY1 = canvasSize / 3.8;
+      waterDropletLittleX2 = canvasSize / 29;
+
     }
 
     // setup
@@ -150,15 +162,46 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
       p.circle(0, 0, bigCircleC);
       p.pop();
 
+
       // long skinny lots of  triangles
       p.push();
+        p.translate(p.center.x, p.center.y);
+        p.noStroke();
+        p.fill(this._c.hotPink200);
+        for (let i = 0; i < 12; i++) {
+          p.triangle(-trianglex1, triangley1, -trianglex1, -triangley1, -trianglex3, 0);
+          p.rotate(30);
+        }
+      p.pop();
+
+      // water droplets
+
+      p.push();
+        p.translate(p.center.x, p.center.y);
+        p.noStroke();
+        p.beginShape();
+          for (let i = 0; i < 12; i++) {
+            p.fill(this._c.oceanBlue200);
+            p.bezier(0, -waterDropletY1, -waterDropletX2, -waterDropletY2, waterDropletX2, -waterDropletY2, 0, -waterDropletY1);
+            p.fill(this._c.hotPink200);
+            p.circle(0, -waterDropletCircleY, waterDropletCircleC);
+            p.rotate(30);
+          };
+        p.endShape();
+      p.pop();
+      p.push();
+
+      p.fill(this._c.oceanBlue300);
       p.translate(p.center.x, p.center.y);
       p.noStroke();
-      p.fill(this._c.hotPink200);
+      p.beginShape();
+      p.rotate(15);
+
       for (let i = 0; i < 12; i++) {
-        p.triangle(-trianglex1, triangley1, -trianglex1, -triangley1, -trianglex3, 0);
         p.rotate(30);
-      }
+        p.bezier(0, -waterDropletLittleY2, -waterDropletLittleX2, -waterDropletLittleY1, waterDropletLittleX2, -waterDropletLittleY1, 0, -waterDropletLittleY2);
+      };
+      p.endShape();
       p.pop();
 
       // outer triple circles
