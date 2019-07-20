@@ -91,7 +91,8 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
     var waterDropletCircleC,  waterDropletCircleY;
     var waterDropletLittleY2, waterDropletLittleY1, waterDropletLittleX2;
     let curve, curvePointX, curvePointY;
-    let biggestCircle;
+    let biggestCircle, nearlyBiggestCircle;
+    let circleInCurvedTriangles, smallCurvedTriangleStartPoint, smallCurvedTrianglesmallestControlPoint, smallCurvedTriangleHeight, smallCurvedTriangleHighestHeight;
 
     // setup vars
     function calculateSizes() {
@@ -141,6 +142,14 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
       curvePointX = canvasSize / 2.4;
       curvePointY = canvasSize / 8;
       biggestCircle = canvasSize / 2.25;
+      nearlyBiggestCircle = canvasSize / 2.8;
+
+      circleInCurvedTriangles = canvasSize / 40
+      smallCurvedTriangleStartPoint = canvasSize / 20;
+      smallCurvedTrianglesmallestControlPoint = canvasSize / 29;
+      smallCurvedTriangleHeight = canvasSize / 2.8;
+      smallCurvedTriangleHighestHeight = canvasSize / 2.26;
+
 
     }
 
@@ -163,8 +172,8 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
       // Outer flower shape
       p.push();
         p.translate(p.center.x, p.center.y);
-        p.fill(p.color(this._c.green100));
-        p.stroke(p.color(this._c.green100));
+        p.fill(p.color(this._c.oceanBlue400));
+        p.stroke(p.color(this._c.oceanBlue400));
         for (let i = 0; i < 12; i++) {
           p.beginShape();
           p.curve(curve, curve, -curvePointY, -curvePointX, curvePointY, -curvePointX, -curve, curve);
@@ -181,12 +190,20 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
       p.pop();
 
 
-      // big white circle
+      // big blue circle
+      p.push();
+      p.translate(p.center.x, p.center.y);
+      p.noStroke();
+      p.fill(p.color(this._c.green100));
+
+      p.circle(0, 0, nearlyBiggestCircle);
+      p.pop();
+
+      // big blue circle
       p.push();
       p.translate(p.center.x, p.center.y);
       p.noStroke();
       p.fill(p.color(this._c.oceanBlue300));
-
       p.circle(0, 0, bigCircleC);
       p.pop();
 
@@ -379,6 +396,39 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
         p.rotate(60);
       }
       p.pop();
+
+      // Curved triangles
+      p.push();
+        p.translate(p.center.x, p.center.y);
+        p.noStroke();
+        for (let i = 0; i < 24; i++) {
+
+          p.beginShape();
+          p.fill(this._c.oceanGreen400);
+
+
+
+          p.vertex(-smallCurvedTriangleStartPoint, -smallCurvedTriangleHeight);
+          p.bezierVertex(-smallCurvedTriangleStartPoint, -smallCurvedTriangleHeight, -smallCurvedTrianglesmallestControlPoint, -smallCurvedTriangleHeight, 0, -smallCurvedTriangleHighestHeight);
+          p.bezierVertex(0, -smallCurvedTriangleHighestHeight, smallCurvedTrianglesmallestControlPoint, -smallCurvedTriangleHeight, smallCurvedTriangleStartPoint, -smallCurvedTriangleHeight);
+          p.vertex(smallCurvedTriangleStartPoint, -smallCurvedTriangleHeight);
+          p.endShape(p.CLOSE);
+          p.rotate(15);
+
+        }
+      p.pop();
+
+      // The circles in the triangles
+      p.push();
+        p.noStroke();
+        p.translate(p.center.x, p.center.y);
+          p.fill(this._c.yellowGreen200);
+          for (let i = 0; i < 24; i++) {
+            p.circle(0, -smallCurvedTriangleHeight, circleInCurvedTriangles);
+            p.rotate(15);
+          }
+      p.pop();
+
 
     };
   };
