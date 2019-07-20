@@ -189,6 +189,33 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
         p.circle(0, 0, biggestCircle)
       p.pop();
 
+      // Curved triangles
+      p.push();
+      p.translate(p.center.x, p.center.y);
+      p.noStroke();
+      for (let i = 0; i < 24; i++) {
+        p.beginShape();
+        p.fill(this._c.oceanGreen400);
+        p.vertex(-smallCurvedTriangleStartPoint, -smallCurvedTriangleHeight);
+        p.bezierVertex(-smallCurvedTriangleStartPoint, -smallCurvedTriangleHeight, -smallCurvedTrianglesmallestControlPoint, -smallCurvedTriangleHeight, 0, -smallCurvedTriangleHighestHeight);
+        p.bezierVertex(0, -smallCurvedTriangleHighestHeight, smallCurvedTrianglesmallestControlPoint, -smallCurvedTriangleHeight, smallCurvedTriangleStartPoint, -smallCurvedTriangleHeight);
+        p.vertex(smallCurvedTriangleStartPoint, -smallCurvedTriangleHeight);
+        p.endShape(p.CLOSE);
+        p.rotate(15);
+      }
+      p.pop();
+
+      // The circles in the triangles
+      p.push();
+      p.noStroke();
+      p.translate(p.center.x, p.center.y);
+      p.fill(this._c.yellowGreen200);
+      for (let i = 0; i < 24; i++) {
+        p.circle(0, -smallCurvedTriangleHeight, circleInCurvedTriangles);
+        p.rotate(15);
+      }
+      p.pop();
+
 
       // big blue circle
       p.push();
@@ -395,38 +422,6 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
         p.curve(-petal, 0, 0, 0, 0, petal, -petal, petal);
         p.rotate(60);
       }
-      p.pop();
-
-      // Curved triangles
-      p.push();
-        p.translate(p.center.x, p.center.y);
-        p.noStroke();
-        for (let i = 0; i < 24; i++) {
-
-          p.beginShape();
-          p.fill(this._c.oceanGreen400);
-
-
-
-          p.vertex(-smallCurvedTriangleStartPoint, -smallCurvedTriangleHeight);
-          p.bezierVertex(-smallCurvedTriangleStartPoint, -smallCurvedTriangleHeight, -smallCurvedTrianglesmallestControlPoint, -smallCurvedTriangleHeight, 0, -smallCurvedTriangleHighestHeight);
-          p.bezierVertex(0, -smallCurvedTriangleHighestHeight, smallCurvedTrianglesmallestControlPoint, -smallCurvedTriangleHeight, smallCurvedTriangleStartPoint, -smallCurvedTriangleHeight);
-          p.vertex(smallCurvedTriangleStartPoint, -smallCurvedTriangleHeight);
-          p.endShape(p.CLOSE);
-          p.rotate(15);
-
-        }
-      p.pop();
-
-      // The circles in the triangles
-      p.push();
-        p.noStroke();
-        p.translate(p.center.x, p.center.y);
-          p.fill(this._c.yellowGreen200);
-          for (let i = 0; i < 24; i++) {
-            p.circle(0, -smallCurvedTriangleHeight, circleInCurvedTriangles);
-            p.rotate(15);
-          }
       p.pop();
 
 
