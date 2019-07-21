@@ -1,5 +1,4 @@
 import {Component, HostListener, OnChanges} from '@angular/core';
-import * as sketch from 'p5';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +6,8 @@ import * as sketch from 'p5';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnChanges {
-  private _sketch;
 
-  title = 'octavia';
-
-  public canvasSize = window.innerWidth;
+  public canvasSize = window.innerWidth / 1.5;
 
   @HostListener('window:resize', ['$event'])
   onResize() {
