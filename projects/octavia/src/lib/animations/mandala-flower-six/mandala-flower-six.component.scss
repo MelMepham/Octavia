@@ -9,6 +9,7 @@ Oct-mandala-flower-six:host {
     --height: 0;
 
     ::ng-deep .p5Canvas {
+        border-radius: 100%;
         width: var(--width) !important;
         height: var(--height) !important;
         display: block;
