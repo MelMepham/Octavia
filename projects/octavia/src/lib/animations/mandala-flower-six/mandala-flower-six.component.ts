@@ -1,6 +1,8 @@
-import {Component, OnDestroy, OnInit, Input, HostListener, OnChanges } from '@angular/core';
+import {Component, OnDestroy, OnInit, Input, OnChanges} from '@angular/core';
 import * as sketch from 'p5';
-import { MandalaFlowerSixColorEnum } from "./mandala-flower-six.enum";
+import {MandalaFlowerSixColorEnum} from "./mandala-flower-six.enum";
+import {BehaviorSubject, Subject} from 'rxjs';
+import {debounceTime, takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'Oct-mandala-flower-six',
@@ -9,28 +11,34 @@ import { MandalaFlowerSixColorEnum } from "./mandala-flower-six.enum";
 })
 export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
 
-  private _canvasSize: number;
-
-  get canvasSize(): number { return this._canvasSize }
-
-  @Input()
-  set canvasSize(val: number) {
-    //TODO I should throttle this so it doesn't reload every time a pixel changes. RXJS here we come!
-      this._canvasSize = val;
-
-    let canvas = document.querySelector("canvas")
-        ? document.querySelector("canvas")
-        : document.querySelector("div")
-
-    if (canvas.style.width != this.canvasSize.toString() + "px") {
-      canvas.style.setProperty('--width', this.canvasSize + "px");
-      canvas.style.setProperty('--height', this.canvasSize + "px");
-    }
-  }
-  @Input() isAnimated: boolean;
-
+  private _canvasObservable;
+  private _canvasObservable$ = new BehaviorSubject(this._canvasObservable);
+  private _destroyed$ = new Subject<void>();
   private _sketch;
   private _c = MandalaFlowerSixColorEnum;
+
+  public canvasDocument;
+  public canvas;
+
+  get canvasSize() {
+    return this._canvasObservable$.asObservable() }
+
+  @Input()
+  set canvasSize(val) {
+    this._canvasObservable = val;
+    this._canvasObservable$.next(this._canvasObservable);
+
+    this._canvasObservable$.pipe(
+        debounceTime(100),
+        takeUntil(this._destroyed$)
+    ).subscribe(val => {
+      this.canvasDocument.style.setProperty('--width', val + "px");
+      this.canvasDocument.style.setProperty('--height', val + "px");
+      }
+    )
+  }
+
+  @Input() isAnimated: boolean;
 
   public ngOnInit(): void {
     this.isAnimated = this.isAnimated ? this.isAnimated : true;
@@ -43,11 +51,15 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
 
   public ngOnDestroy(): void {
     this.destroyCanvas();
+    this._destroyed$.next();
   }
 
 
   private createCanvas(): void {
     this._sketch = new sketch(this.mandala.bind(this));
+    this.canvasDocument = document.querySelector("canvas")
+        ? document.querySelector("canvas")
+        : document.querySelector("div");
   }
 
   private destroyCanvas(): void {
@@ -55,19 +67,12 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   public mandala = function (p: any) {
-
-    let canvasSize = this.canvasSize;
+    let canvasSize = this.canvas;
 
     if(canvasSize === undefined) {
       // TODO see if I can hook into the svg canvas rather then having to set the width and height using css.
       let newSize = window.innerWidth;
-      let canvas = document.querySelector("canvas")
-          ? document.querySelector("canvas")
-          : document.querySelector("div");
-
-        canvas.style.setProperty('--width', newSize + "px");
-        canvas.style.setProperty('--height', newSize + "px");
-        canvasSize = newSize;
+      canvasSize = newSize;
     }
 
 

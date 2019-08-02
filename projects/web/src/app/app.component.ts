@@ -11,7 +11,7 @@ export class AppComponent implements OnChanges {
 
   @HostListener('window:resize', ['$event'])
   onResize() {
-    this.canvasSize = window.innerWidth;
+    this.canvasSize = window.innerWidth / 1.5;
   }
 
   ngOnChanges(): void {
