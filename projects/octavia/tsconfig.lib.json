@@ -10,7 +10,8 @@
       "dom",
       "es2018"
     ],
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "angularCompilerOptions": {
     "annotateForClosureCompiler": true,
