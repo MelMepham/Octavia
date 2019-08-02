@@ -7,6 +7,7 @@ import {Component, HostListener, OnChanges} from '@angular/core';
 })
 export class AppComponent implements OnChanges {
 
+  public green = "yellow";
   public canvasSize = window.innerWidth / 1.5;
   public animated = false;
   @HostListener('window:resize', ['$event'])

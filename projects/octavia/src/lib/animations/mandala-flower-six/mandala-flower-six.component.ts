@@ -1,4 +1,11 @@
-import {Component, OnDestroy, OnInit, Input, OnChanges, SimpleChanges, SimpleChange} from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  Input,
+  OnChanges,
+  SimpleChanges
+} from '@angular/core';
 import {debounceTime, takeUntil} from 'rxjs/operators';
 import {BehaviorSubject, Subject} from 'rxjs';
 import * as sketch from 'p5';
@@ -49,14 +56,13 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
   @Input() highlightColor = "pink";
 
   public ngOnInit(): void {
-    this.createCanvas();
     this._getColors(COLOR_DATA, this.primaryColor, this.secondaryColor, this.highlightColor)
+    this.createCanvas()
   }
 
   public ngOnChanges(changes: SimpleChanges) {
     if (changes.isAnimated) {
-      const animationStatus: SimpleChange = changes.isAnimated;
-      this.checkIsAnimated(animationStatus.currentValue);
+      this.checkIsAnimated(this.isAnimated);
     }
   }
 
@@ -70,17 +76,21 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
     this.canvasDocument = document.querySelector("canvas")
         ? document.querySelector("canvas")
         : document.querySelector("div");
+    if (this.isAnimated) {
+      return
+    }
+    this.checkIsAnimated(this.isAnimated);
   }
 
   private destroyCanvas(): void {
     this._sketch.noCanvas();
   }
 
-  private checkIsAnimated(val: boolean = this.isAnimated) {
-    if (!this._sketch) {
-      return
+  private checkIsAnimated(val: boolean) {
+    if (this._sketch) {
+      val ? this._sketch.loop() : this._sketch.noLoop();
     }
-    val ? this._sketch.loop() : this._sketch.noLoop();
+    return;
   }
 
   private _getColors(obj, primary, secondary, highlight) {
@@ -90,6 +100,7 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   public mandala = function (p: any) {
+
     let canvasSize = this.canvas;
 
     if(canvasSize === undefined) {
