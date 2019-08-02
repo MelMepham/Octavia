@@ -1,20 +1,36 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppComponent } from './app.component';
-import { ButtonComponent } from '../../../octavia/src/lib/components/public-api'
+import {ShellComponent} from './shell/shell.component';
+import {RouterModule, Routes} from '@angular/router';
+import {HomepageComponent} from './homepage/homepage.component';
+import {HeaderModule} from './shell/header/header.module';
 import { MandalaFlowerSixComponent } from "../../../octavia/src/lib/animations/mandala-flower-six/mandala-flower-six.component";
+
+
+const routes: Routes = [{
+    path: '',
+    component: HomepageComponent
+}];
 
 @NgModule({
   declarations: [
     AppComponent,
-    ButtonComponent,
+    ShellComponent,
+    HomepageComponent,
     MandalaFlowerSixComponent
+
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    HeaderModule
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  exports: [
+    RouterModule
+  ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

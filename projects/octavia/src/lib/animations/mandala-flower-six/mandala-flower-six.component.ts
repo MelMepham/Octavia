@@ -6,8 +6,6 @@ import {
   OnChanges,
   SimpleChanges
 } from '@angular/core';
-import {debounceTime, takeUntil} from 'rxjs/operators';
-import {BehaviorSubject, Subject} from 'rxjs';
 import * as sketch from 'p5';
 
 import * as COLOR_DATA from "../../../assets/colors.json";
@@ -20,34 +18,10 @@ import * as COLOR_DATA from "../../../assets/colors.json";
 })
 export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
 
-  private _canvasObservable;
-  private _canvasObservable$ = new BehaviorSubject(this._canvasObservable);
-  private _destroyed$ = new Subject<void>();
   private _sketch;
   private _p;
   private _s;
   private _h;
-
-  public canvasDocument;
-  public canvas;
-
-  get canvasSize() {
-    return this._canvasObservable$.asObservable() }
-
-  @Input()
-  set canvasSize(val) {
-    this._canvasObservable = val;
-    this._canvasObservable$.next(this._canvasObservable);
-
-    this._canvasObservable$.pipe(
-        debounceTime(100),
-        takeUntil(this._destroyed$)
-    ).subscribe(val => {
-      this.canvasDocument.style.setProperty('--width', val + "px");
-      this.canvasDocument.style.setProperty('--height', val + "px");
-      }
-    )
-  }
 
   @Input() isAnimated = true;
 
@@ -68,14 +42,10 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
 
   public ngOnDestroy(): void {
     this.destroyCanvas();
-    this._destroyed$.next();
   }
 
   private createCanvas(): void {
     this._sketch = new sketch(this.mandala.bind(this));
-    this.canvasDocument = document.querySelector("canvas")
-        ? document.querySelector("canvas")
-        : document.querySelector("div");
     if (this.isAnimated) {
       return
     }
@@ -101,14 +71,9 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
 
   public mandala = function (p: any) {
 
-    let canvasSize = this.canvas;
+    let canvasSize = window.innerWidth;
 
-    if(canvasSize === undefined) {
-      let newSize = window.innerWidth;
-      canvasSize = newSize;
-    }
-
-    // mandala objects
+  // mandala objects
     let petal;
     let flowerX1, flowerY1, flowerY2, flowerCircle;
     let Atrianglex1, Atriangley1, Atriangley2, Btriangley1;
@@ -188,6 +153,7 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
     // setup
     p.setup = () => {
       p.createCanvas(canvasSize, canvasSize).parent('forest-mandala');
+      console.log('setup', canvasSize)
       p.angleMode(p.DEGREES);
       calculateSizes();
     };
