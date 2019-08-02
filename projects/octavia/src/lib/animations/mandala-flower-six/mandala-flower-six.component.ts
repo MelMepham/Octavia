@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, Input, OnChanges} from '@angular/core';
+import {Component, OnDestroy, OnInit, Input, OnChanges, SimpleChanges, SimpleChange} from '@angular/core';
 import * as sketch from 'p5';
 import {MandalaFlowerSixColorEnum} from "./mandala-flower-six.enum";
 import {BehaviorSubject, Subject} from 'rxjs';
@@ -41,12 +41,14 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
   @Input() isAnimated: boolean;
 
   public ngOnInit(): void {
-    this.isAnimated = this.isAnimated ? this.isAnimated : true;
-
     this.createCanvas();
   }
 
-  public ngOnChanges() {
+  public ngOnChanges(changes: SimpleChanges) {
+    if (changes.isAnimated) {
+      const animationStatus: SimpleChange = changes.isAnimated;
+      this.checkIsAnimated(animationStatus.currentValue);
+    }
   }
 
   public ngOnDestroy(): void {
@@ -54,31 +56,32 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
     this._destroyed$.next();
   }
 
-
   private createCanvas(): void {
-    this._sketch = new sketch(this.mandala.bind(this));
+    this._sketch = new sketch(this.mandala.bind(this))
     this.canvasDocument = document.querySelector("canvas")
         ? document.querySelector("canvas")
         : document.querySelector("div");
+    this.checkIsAnimated();
   }
 
   private destroyCanvas(): void {
     this._sketch.noCanvas();
   }
 
+  private checkIsAnimated(val: boolean = this.isAnimated) {
+    if (!this._sketch) {
+      return
+    }
+    val ? this._sketch.loop() : this._sketch.noLoop();
+  }
+
   public mandala = function (p: any) {
     let canvasSize = this.canvas;
 
     if(canvasSize === undefined) {
-      // TODO see if I can hook into the svg canvas rather then having to set the width and height using css.
       let newSize = window.innerWidth;
       canvasSize = newSize;
     }
-
-
-    let isAnimated = this.isAnimated;
-    let lastPrint = 0;
-    let i = 0;
 
     // mandala objects
     let petal;
