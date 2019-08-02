@@ -1,0 +1,30 @@
+app-header:host {
+  display: block;
+}
+
+.header__grid-container {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  justify-content: right;
+  padding-left: 48px;
+  padding-right: 48px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+
+  background-color: #38FFC9;
+}
+
+.header__grid-container-items {
+    display:inline-block;
+
+  a {
+    float: right;
+    text-align: right;
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  a:first-of-type {
+    padding-right: 0;
+  }
+}
