@@ -70,7 +70,6 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
     this.canvasDocument = document.querySelector("canvas")
         ? document.querySelector("canvas")
         : document.querySelector("div");
-    // this.checkIsAnimated();
   }
 
   private destroyCanvas(): void {
