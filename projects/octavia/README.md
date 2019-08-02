@@ -7,3 +7,6 @@ If you want to contribute feel free!
 Input:
 * [canvasSize] : String
 > This is the size of the canvas. It defaults to the window size. You can make this responsive by listening to the resize event.
+
+* [isAnimated] : boolean
+> isAnimated controls whether the mandala is animated or not.
