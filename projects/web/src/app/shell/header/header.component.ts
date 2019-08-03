@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AnimationService} from "../../../services/animation.service";
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  public animationOn: boolean;
+  constructor(
+    private _isAnimated: AnimationService
+  ) { }
 
-  ngOnInit() {
+  public ngOnInit() {
+    this.animationOn = this._isAnimated.isAnimated;
   }
 
+  public onButtonClick() {
+    this.animationOn = !this.animationOn;
+    this._isAnimated.updateGlobalAnimationState();
+  }
 }

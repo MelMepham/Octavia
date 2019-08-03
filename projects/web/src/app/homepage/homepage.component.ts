@@ -1,4 +1,7 @@
 import {Component, HostListener, OnInit} from '@angular/core';
+import {AnimationService} from "../../services/animation.service";
+import {Subject} from 'rxjs';
+import {takeUntil} from "rxjs/operators";
 
 @Component({
   selector: 'app-homepage',
@@ -7,11 +10,20 @@ import {Component, HostListener, OnInit} from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  private _destroyed$ = new Subject();
+  public shouldAnimate: boolean;
+  constructor(
+    private _isAnimated: AnimationService
+  ) { }
 
-  public animated = false;
+  public ngOnInit() {
+    this._isAnimated.isAnimatedObservable$.pipe(
+      takeUntil(this._destroyed$)
+    ).subscribe(val => this.shouldAnimate = val)
+  }
 
-  ngOnInit() {
+  public ngOnDestroy() {
+    this._destroyed$.next();
   }
 
 }

@@ -14,8 +14,16 @@
       <a>Home</a>
     </div>
       <button
-      octButton>
-        Stop animations
+        (click)="onButtonClick()"
+        octButton>
+        <ng-container
+          *ngIf="animationOn">
+          Stop animations
+        </ng-container>
+        <ng-container
+          *ngIf="!animationOn">
+          Start animations
+        </ng-container>
       </button>
     </div>
 </header>
