@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header.component';
 import { ButtonModule } from '../../../../../octavia/src/public-api'
 import {LogoComponent} from "../../../assets/logo-svg/logo.component";
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {LogoComponent} from "../../../assets/logo-svg/logo.component";
   ],
   imports: [
     CommonModule,
-    ButtonModule
+    ButtonModule,
+    RouterModule
   ]
 })
 export class HeaderModule { }

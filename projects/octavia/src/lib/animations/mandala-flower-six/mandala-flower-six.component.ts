@@ -154,7 +154,6 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
     // setup
     p.setup = () => {
       p.createCanvas(canvasSize, canvasSize).parent('forest-mandala');
-      console.log('setup', canvasSize)
       p.angleMode(p.DEGREES);
       calculateSizes();
     };

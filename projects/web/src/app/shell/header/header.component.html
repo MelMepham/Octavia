@@ -10,11 +10,19 @@
     <div
       class="header__grid-container-items">
       <div
-        class="header__grid-container-items-link">
-      <a>About</a>
-      <a>Fun stuff</a>
-      <a>Blog</a>
-      <a>Home</a>
+        class="header__grid-container-items-link-list">
+      <a
+        routerLink="/about"
+        routerLinkActive="header__active-route">About</a>
+      <a
+        routerLink="/fun"
+        routerLinkActive="header__active-route">Fun stuff</a>
+      <a
+        routerLink="/blog"
+        routerLinkActive="header__active-route">Blog</a>
+      <a
+        routerLink="/home"
+        routerLinkActive="header__active-route">Home</a>
     </div>
       <button
         (click)="onButtonClick()"

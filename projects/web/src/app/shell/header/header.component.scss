@@ -1,7 +1,6 @@
 app-header:host {
-
-  --homepage-logo-color: #00778A;
-
+  --homepage-logo-color: #00522D;
+  --homepage-background-color: #9CFFE4;
   display: block;
 }
 
@@ -11,9 +10,10 @@ app-header:host {
   padding-left: 48px;
   padding-right: 48px;
   padding-top: 16px;
-  padding-bottom: 16px;
-  background-color: #38FFC9;
+  background-color: var(--homepage-background-color);
   align-items: center;
+  word-wrap: break-word;
+  color: var(--homepage-logo-color);
 }
 .header__grid-logo {
   column-gap: 10px;
@@ -26,22 +26,39 @@ app-header:host {
   display: grid;
   grid-template-columns: 80% 20%;
   align-items: center;
+  height: 100%;
 
-  a {
-    float: right;
-    text-align: right;
-    padding-right: 16px;
-    padding-left: 16px;
-    vertical-align: center;
-
-  }
   button {
     float: right;
     padding-right: 16px;
     padding-left: 16px;
+    margin-left: 16px;
+    margin-bottom: 16px;
   }
-
 }
+
+a {
+  float: right;
+  padding: 16px;
+  text-decoration: none;
+  color: var(--homepage-logo-color);
+  border-bottom: 8px var(--homepage-background-color) solid;
+}
+
+a:hover {
+  border-bottom: 8px var(--homepage-logo-color) solid;
+}
+
+a.header__active-route {
+  text-decoration: none;
+  color: var(--homepage-logo-color);
+  border-bottom: 8px var(--homepage-logo-color) solid;
+}
+
+.header__grid-container-items-link-list {
+  height: 100%;
+}
+
 .header__logo {
   ::ng-deep .logo{
     fill:var(--homepage-logo-color);

@@ -8,8 +8,14 @@ import {HeaderModule} from './shell/header/header.module';
 import {MandalaFlowerSixModule} from "../../../octavia/dist/octavia";
 
 
-const routes: Routes = [{
+const routes: Routes = [
+  {
     path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'home',
     component: HomepageComponent
 }];
 
