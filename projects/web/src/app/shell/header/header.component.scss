@@ -1,4 +1,7 @@
 app-header:host {
+
+  --homepage-logo-color: #00778A;
+
   display: block;
 }
 
@@ -10,6 +13,12 @@ app-header:host {
   padding-top: 16px;
   padding-bottom: 16px;
   background-color: #38FFC9;
+  align-items: center;
+}
+.header__grid-logo {
+  column-gap: 10px;
+  display: grid;
+  grid-template-columns: 50px auto;
   align-items: center;
 }
 
@@ -35,8 +44,8 @@ app-header:host {
 }
 .header__logo {
   ::ng-deep .logo{
-    fill:hotpink;
-    width: 50px;
-    height: 50px;
+    fill:var(--homepage-logo-color);
+    width: 45px;
+    height: 45px;
   }
 }
