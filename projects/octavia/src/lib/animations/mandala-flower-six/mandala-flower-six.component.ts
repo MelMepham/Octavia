@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import * as sketch from 'p5';
 
-import * as COLOR_DATA from "../../../assets/colors.json";
+import { ColorsEnum } from "../../../assets/colors.enum";
 
 
 @Component({
@@ -30,7 +30,8 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
   @Input() highlightColor = "pink";
 
   public ngOnInit(): void {
-    this._getColors(COLOR_DATA, this.primaryColor, this.secondaryColor, this.highlightColor)
+    //TODO can not build this color info up from the json - wont do an npm build
+    this._getColors(ColorsEnum, this.primaryColor, this.secondaryColor, this.highlightColor);
     this.createCanvas()
   }
 
@@ -64,9 +65,9 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   private _getColors(obj, primary, secondary, highlight) {
-    this._p = obj.default[primary][0];
-    this._s = obj.default[secondary][0];
-    this._h = obj.default[highlight][0];
+    this._p = obj[primary][0];
+    this._s = obj[secondary][0];
+    this._h = obj[highlight][0];
   }
 
   public mandala = function (p: any) {

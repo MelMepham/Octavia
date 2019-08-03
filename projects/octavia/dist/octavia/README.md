@@ -1,24 +1,14 @@
-# Octavia
+This is a personal library that I have created for my own learning.
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.1.
+If you want to contribute feel free! 
 
-## Code scaffolding
+# DOCS:
+#### Oct-mandala-flower-six
 
-Run `ng generate component component-name --project octavia` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project octavia`.
-> Note: Don't forget to add `--project octavia` or else it will be added to the default project in your `angular.json` file. 
+###### [isAnimated]: boolean
+> isAnimated controls whether the mandala is animated or not.
 
-## Build
-
-Run `ng build octavia` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Publishing
-
-After building your library with `ng build octavia`, go to the dist folder `cd dist/octavia` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test octavia` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+###### [primaryColor]: String
+###### [secondaryColor]: String
+###### [highlightColor]: String
+> Strings currently supported are "green", "pink", "blue", "yellow" and they haven't all been tested as working well together.

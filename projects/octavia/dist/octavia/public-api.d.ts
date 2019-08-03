@@ -1,3 +1,2 @@
-export * from './lib/octavia.service';
-export * from './lib/octavia.component';
-export * from './lib/octavia.module';
+export * from './lib/components/public-api';
+export * from './lib/animations/public-api';

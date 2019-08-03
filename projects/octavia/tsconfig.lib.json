@@ -10,8 +10,10 @@
       "dom",
       "es2018"
     ],
-    "resolveJsonModule": true,
-    "esModuleInterop": true
+    "typeRoots": [
+      "node_modules/@types",
+      "src/typings.d.ts"
+    ]
   },
   "angularCompilerOptions": {
     "annotateForClosureCompiler": true,
@@ -19,7 +21,8 @@
     "strictMetadataEmit": true,
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true,
-    "enableResourceInlining": true
+    "enableResourceInlining": true,
+    "resolveJsonModule": true
   },
   "exclude": [
     "src/test.ts",

@@ -24,8 +24,7 @@
             "tsConfig": "projects/web/src/tsconfig.app.json",
             "assets": [
               "projects/web/src/favicon.ico",
-              "projects/web/src/assets",
-              "projects/web/src/assets/colors.json"
+              "projects/web/src/assets"
               ],
             "styles": [
               "projects/web/src/styles.scss"
@@ -143,7 +142,7 @@
       }
     }
   },
-  "defaultProject": "web",
+  "defaultProject": "octavia",
   "schematics": {
     "@schematics/angular:component": {
       "styleext": "scss"

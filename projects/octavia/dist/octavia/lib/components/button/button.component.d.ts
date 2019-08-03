@@ -1,5 +1,5 @@
 import { OnInit } from '@angular/core';
-export declare class OctaviaComponent implements OnInit {
+export declare class ButtonComponent implements OnInit {
     constructor();
     ngOnInit(): void;
 }
