@@ -6,11 +6,17 @@
 .oct-button {
     background-color: var(--btn-primary-100);
     color: var(--btn-primary-700);
-    box-shadow: 2px 2px var(--btn-primary-700);
     padding: 8px 6px 6px 6px;
     border-radius: 6px;
     border: 2px solid var(--btn-primary-700);
     text-align: center;
+    box-shadow: 0 2px var(--btn-primary-700);
+    transform: translateY(0);
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+    //transition: transform 0.3s ease-in-out;
+
+
 
     &:hover {
         background-color: var(--btn-primary-300);
@@ -20,7 +26,12 @@
         background-color: var(--btn-primary-700);
         color: var(--btn-primary-100);
     }
+}
 
+.oct-button:hover {
+    box-shadow: 0px 0px var(--btn-primary-700);
+    transform: translateY(2px);
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 
