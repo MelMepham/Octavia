@@ -6,6 +6,7 @@
     "start": "ng serve --port 8400"
   },
   "dependencies": {
+    "octavia": "^1.0.4",
     "@angular/router": "^8.1.0"
   }
 }

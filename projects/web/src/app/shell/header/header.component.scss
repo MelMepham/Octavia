@@ -4,13 +4,13 @@ app-header:host {
 
 .header__grid-container {
   display: grid;
-  grid-template-columns: 40% 60%;
+
+  grid-template-columns: 20% 80%;
   justify-content: right;
   padding-left: 48px;
   padding-right: 48px;
   padding-top: 16px;
   padding-bottom: 16px;
-
   background-color: #38FFC9;
 }
 
@@ -23,8 +23,11 @@ app-header:host {
     padding-right: 16px;
     padding-left: 16px;
   }
-
-  a:first-of-type {
-    padding-right: 0;
+  button {
+    float: right;
+    text-align: right;
+    padding-right: 16px;
+    padding-left: 16px;
   }
+
 }

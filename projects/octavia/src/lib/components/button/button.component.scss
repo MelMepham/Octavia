@@ -1,5 +1,26 @@
 @import url('../../styles/env.scss');
+:host {
 
-.oct-button__primary {
-    background-color: var(--btn-primary);
 }
+
+.oct-button {
+    background-color: var(--btn-primary-100);
+    color: var(--btn-primary-700);
+
+    box-shadow: 2px 2px var(--btn-primary-700);
+    padding: 8px 6px 6px 6px;
+    border-radius: 6px;
+    border: 2px solid var(--btn-primary-700);
+
+    &:hover {
+        background-color: var(--btn-primary-300);
+    }
+    &:active {
+        box-shadow: 2px 2px var(--btn-primary-700);
+        background-color: var(--btn-primary-700);
+        color: var(--btn-primary-100);
+    }
+
+}
+
+

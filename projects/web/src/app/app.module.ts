@@ -5,7 +5,7 @@ import {ShellComponent} from './shell/shell.component';
 import {RouterModule, Routes} from '@angular/router';
 import {HomepageComponent} from './homepage/homepage.component';
 import {HeaderModule} from './shell/header/header.module';
-import { MandalaFlowerSixComponent } from "../../../octavia/src/lib/animations/mandala-flower-six/mandala-flower-six.component";
+import {MandalaFlowerSixModule} from "../../../octavia/dist/octavia";
 
 
 const routes: Routes = [{
@@ -17,20 +17,19 @@ const routes: Routes = [{
   declarations: [
     AppComponent,
     ShellComponent,
-    HomepageComponent,
-    MandalaFlowerSixComponent
+    HomepageComponent
 
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    HeaderModule
+    HeaderModule,
+    MandalaFlowerSixModule
   ],
   exports: [
     RouterModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
