@@ -1,13 +1,12 @@
 {
   "name": "octavia",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "scripts": {
     "build": "ng build"
   },
   "peerDependencies": {
     "p5": "^0.7.3",
     "@angular/common": "^8.1.1",
-    "@angular/core": "^8.1.1",
-    "@angular/http": "^8.1.1"
+    "@angular/core": "^8.1.1"
   }
 }

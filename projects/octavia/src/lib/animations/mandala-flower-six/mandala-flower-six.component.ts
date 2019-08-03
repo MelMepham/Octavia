@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import * as sketch from 'p5';
 
-import { ColorsEnum } from "../../../assets/colors.enum";
+import { ColorsEnum } from "../../styles/colors.enum";
 
 
 @Component({
