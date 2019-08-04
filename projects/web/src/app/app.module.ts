@@ -8,6 +8,7 @@ import {ShellComponent} from './shell/shell.component';
 import {HeaderModule} from './shell/header/header.module';
 import {FooterModule} from './shell/footer/footer.module';
 import {HomepageComponent} from './homepage/homepage.component';
+import {AboutMeComponent} from './about-me/about-me.component';
 
 const routes: Routes = [
   {
@@ -18,13 +19,18 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomepageComponent
-}];
+},
+  {
+    path: 'about',
+    component: AboutMeComponent
+  }];
 
 @NgModule({
   declarations: [
     AppComponent,
     ShellComponent,
-    HomepageComponent
+    HomepageComponent,
+    AboutMeComponent
 
   ],
   imports: [

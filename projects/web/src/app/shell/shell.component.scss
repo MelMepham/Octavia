@@ -3,6 +3,7 @@ app-shell:host {
   position: relative;
   min-height: 100vh;
   padding-bottom: 50px;
-  padding-top: 56px;
 
+  --dark-color: blue;
+  --light-color: green;
 }

@@ -1,6 +1,4 @@
 app-header:host {
-  --homepage-logo-color: #00522D;
-  --homepage-background-color: #9CFFE4;
   display: block;
   position: fixed;
   right: 0;
@@ -14,10 +12,10 @@ app-header:host {
   padding-left: 48px;
   padding-right: 48px;
   padding-bottom: 16px;
-  background-color: var(--homepage-background-color);
+  background-color: var(--light-color);
   align-items: center;
   word-wrap: break-word;
-  color: var(--homepage-logo-color);
+  color: var(--dark-color);
   height: 56px;
 }
 .header__grid-logo {
@@ -39,17 +37,17 @@ app-header:host {
     padding-bottom: 24px;
     padding-top: 24px;
     text-decoration: none;
-    color: var(--homepage-logo-color);
-    border-bottom: 8px var(--homepage-background-color) solid;
+    color: var(--dark-color);
+    border-bottom: 8px var(--light-color) solid;
   }
 
   a:hover {
-    border-bottom: 8px var(--homepage-logo-color) solid;
+    border-bottom: 8px var(--dark-color) solid;
   }
 
   a.header__active-route {
-    color: var(--homepage-logo-color);
-    border-bottom: 8px var(--homepage-logo-color) solid;
+    color: var(--dark-color);
+    border-bottom: 8px var(--dark-color) solid;
   }
 
 }
@@ -60,14 +58,14 @@ app-header:host {
 
 .header__logo {
   ::ng-deep .logo{
-    fill:var(--homepage-logo-color);
+    fill:var(--dark-color);
     width: 45px;
     height: 45px;
   }
 }
 .header__mobile {
   z-index: 1;
-  background-color: var(--homepage-background-color);
+  background-color: var(--light-color);
   height: 56px;
   padding-left: 24px;
   padding-right: 24px;
@@ -101,7 +99,7 @@ app-header:host {
   width: 100%;
   position: absolute;
   height: 190px;
-  background-color: var(--homepage-background-color);
+  background-color: var(--light-color);
   z-index: -1;
 
   a {
@@ -110,16 +108,16 @@ app-header:host {
     display: block;
     padding-left: 24px;
     text-decoration: none;
-    color: var(--homepage-logo-color);
-    border-left: 8px var(--homepage-background-color) solid;
+    color: var(--dark-color);
+    border-left: 8px var(--light-color) solid;
   }
 
   a:hover {
-    border-left: 8px var(--homepage-logo-color) solid;
+    border-left: 8px var(--dark-color) solid;
   }
 
   a.header__mobile-active-route {
-    color: var(--homepage-logo-color);
-    border-left: 8px var(--homepage-logo-color) solid;
+    color: var(--dark-color);
+    border-left: 8px var(--dark-color) solid;
   }
 }

@@ -1,13 +1,11 @@
 app-footer:host{
   display: block;
-  --homepage-logo-color: #00522D;
-  --homepage-background-color: #9CFFE4;
 }
 
 .footer__grid-container {
   padding-top: 16px;
-  background-color: var(--homepage-background-color);
-  color: var(--homepage-logo-color);
+  background-color: var( --light-color);
+  color: var( --dark-color);
   width: 100%;
   position: absolute;
   bottom: 0;
