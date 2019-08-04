@@ -1,14 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { LayoutModule } from '@angular/cdk/layout';
-import {RouterModule, Routes} from '@angular/router';
-import {MandalaFlowerSixModule} from "../../../octavia/dist/octavia";
+import { RouterModule, Routes } from '@angular/router';
+import { MandalaFlowerSixModule } from "../../../octavia/dist/octavia";
 import { AppComponent } from './app.component';
-import {ShellComponent} from './shell/shell.component';
-import {HeaderModule} from './shell/header/header.module';
-import {FooterModule} from './shell/footer/footer.module';
-import {HomepageComponent} from './homepage/homepage.component';
-import {AboutMeComponent} from './about-me/about-me.component';
+import { ShellModule } from './shell/shell.module';
 
 const routes: Routes = [
   {
@@ -18,28 +14,25 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomepageComponent
+    loadChildren: 'src/app/homepage/homepage.module#HomepageModule'
 },
   {
     path: 'about',
-    component: AboutMeComponent
+    loadChildren: 'src/app/about-me/about-me.module#AboutMeModule'
   }];
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ShellComponent,
-    HomepageComponent,
-    AboutMeComponent
+    AppComponent
 
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    HeaderModule,
-    FooterModule,
     MandalaFlowerSixModule,
-    LayoutModule
+    LayoutModule,
+    ShellModule
+
   ],
   exports: [
     RouterModule

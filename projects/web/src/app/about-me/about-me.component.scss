@@ -3,6 +3,11 @@ app-about-me:host {
   padding-top: 56px;
 }
 
+.about-me__container {
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
 .about-me__subnav {
   background-color: var(--dark-color);
   height: 30px;

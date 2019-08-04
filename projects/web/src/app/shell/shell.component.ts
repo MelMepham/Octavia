@@ -46,10 +46,12 @@ export class ShellComponent implements OnInit, OnDestroy {
   };
 
   public updateStyles() {
-    if (this._router.url === '/home'){
+    let route = this._router.url;
+    let routeWithoutHash = route.split('#')[0];
+    if (routeWithoutHash === '/home'){
       this.setStyles(this._themeService.homepage());
     }
-    if (this._router.url === '/about'){
+    if (routeWithoutHash === '/about'){
       this.setStyles(this._themeService.about());
     }
   }
