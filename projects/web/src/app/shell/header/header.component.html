@@ -1,7 +1,8 @@
 <header
+  *ngIf="!isSmall"
   class="header__grid-container">
-
     <div
+      *ngIf="!isSmall"
       class="header__grid-logo">
       <app-logo
         class="header__logo"></app-logo>
@@ -24,17 +25,22 @@
         routerLink="/home"
         routerLinkActive="header__active-route">Home</a>
     </div>
-      <button
-        (click)="onButtonClick()"
-        octButton>
-        <ng-container
-          *ngIf="animationOn">
-          Stop animations
-        </ng-container>
-        <ng-container
-          *ngIf="!animationOn">
-          Start animations
-        </ng-container>
-      </button>
-    </div>
+  </div>
+</header>
+
+<header
+  *ngIf="isSmall"
+  class="header__grid-container-mobile">
+  <div
+    class="header__grid-logo-mobile">
+    <button
+      octButton
+      transparent
+      (click)="toggleMobileMenu()"
+      class="header__logo-button-mobile">
+    <app-logo
+      class="header__logo"></app-logo>
+    </button>
+    Melissa Mepham
+  </div>
 </header>

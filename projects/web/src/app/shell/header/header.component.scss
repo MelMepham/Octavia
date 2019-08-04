@@ -2,18 +2,23 @@ app-header:host {
   --homepage-logo-color: #00522D;
   --homepage-background-color: #9CFFE4;
   display: block;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
 }
 
 .header__grid-container {
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 30% 70%;
   padding-left: 48px;
   padding-right: 48px;
-  padding-top: 16px;
+  padding-bottom: 16px;
   background-color: var(--homepage-background-color);
   align-items: center;
   word-wrap: break-word;
   color: var(--homepage-logo-color);
+  height: 56px;
 }
 .header__grid-logo {
   column-gap: 10px;
@@ -24,22 +29,17 @@ app-header:host {
 
 .header__grid-container-items {
   display: grid;
-  grid-template-columns: 80% 20%;
+  grid-template-columns: 100%;
   align-items: center;
   height: 100%;
 
-  button {
-    float: right;
-    padding-right: 16px;
-    padding-left: 16px;
-    margin-left: 16px;
-    margin-bottom: 16px;
-  }
 }
 
 a {
   float: right;
   padding: 16px;
+  padding-bottom: 24px;
+  padding-top: 24px;
   text-decoration: none;
   color: var(--homepage-logo-color);
   border-bottom: 8px var(--homepage-background-color) solid;
@@ -50,7 +50,6 @@ a:hover {
 }
 
 a.header__active-route {
-  text-decoration: none;
   color: var(--homepage-logo-color);
   border-bottom: 8px var(--homepage-logo-color) solid;
 }
@@ -65,4 +64,36 @@ a.header__active-route {
     width: 45px;
     height: 45px;
   }
+}
+
+.header__grid-container-mobile {
+  display: grid;
+  grid-template-columns: 100%;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 16px;
+  background-color: var(--homepage-background-color);
+  align-items: center;
+  word-wrap: break-word;
+  color: var(--homepage-logo-color);
+  height: 56px;
+}
+
+.header__grid-logo-mobile {
+  padding-top: 12px;
+  column-gap: 10px;
+  display: grid;
+  grid-template-columns: 60px auto;
+  align-items: center;
+
+}
+
+.header__logo-button-mobile {
+  //background: none;
+  //border: 0;
+  //color: inherit;
+  //padding: 0;
+  //overflow: visible;
+  //line-height: normal;
+
 }

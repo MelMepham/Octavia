@@ -3,9 +3,21 @@ app-homepage:host {
 }
 
 .app-homepage__oct-mandala-flower {
-  width: 80%;
-  height: 80%;
+  width: 60%;
+  height: 60%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 48px
+  margin-top: 48px;
+  margin-bottom:48px;
+
+  @media only screen and (max-width: 1000px) {
+    width: 70%;
+    height: 70%;
+  }
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    height: 100%;
+  }
+
+
 }

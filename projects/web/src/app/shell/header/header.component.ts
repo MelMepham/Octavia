@@ -1,8 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AnimationService} from "../../../services/animation.service";
-import {NavigationEnd, Router} from '@angular/router';
-import {filter, map} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-header',
@@ -11,23 +8,22 @@ import {Observable} from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
 
-  public animationOn: boolean;
+  public isSmall: boolean;
+
   constructor(
-    private _isAnimated: AnimationService,
-    private _router: Router
+    private _breakpointObserver: BreakpointObserver
   ) { }
 
   public ngOnInit() {
-    this.animationOn = this._isAnimated.isAnimated;
-    this.setStyleOnRoute();
+
+    this._breakpointObserver
+      .observe(['(min-width: 600px)'])
+      .subscribe((state: BreakpointState) => {
+        this.isSmall = state.matches ? false : true;
+      });
   }
 
-  public setStyleOnRoute () {
-    console.log(this._router.url);
-  }
-
-  public onButtonClick() {
-    this.animationOn = !this.animationOn;
-    this._isAnimated.updateGlobalAnimationState();
+  public toggleMobileMenu() {
+    console.log('click')
   }
 }

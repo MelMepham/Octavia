@@ -30,7 +30,6 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
   @Input() highlightColor = "pink";
 
   public ngOnInit(): void {
-    //TODO can not build this color info up from the json - wont do an npm build
     this._getColors(ColorsEnum, this.primaryColor, this.secondaryColor, this.highlightColor);
     this.createCanvas()
   }
