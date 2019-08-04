@@ -21,14 +21,14 @@ export class AnimatedMessageComponent implements OnInit, OnDestroy {
   }
 
   private createCanvas(): void {
-    this._sketch = new sketch(this.mandala.bind(this));
+    this._sketch = new sketch(this.animatedMessage);
   }
 
   private destroyCanvas(): void {
     this._sketch.noCanvas();
   }
 
-  public mandala = function (p: any) {
+  public animatedMessage = (p: any) => {
 
     let canvasWidth = window.innerWidth / 1.5;
     let canvasHeight = window.innerWidth / 3;
@@ -47,30 +47,16 @@ export class AnimatedMessageComponent implements OnInit, OnDestroy {
 
     };
     p.center = { x: 0, y: 0 };
-    // lets actually draw something now.
+
+    const stars = [1,2,3].map(_ => {
+        return this.getRandomXY(p, canvasWidth, canvasHeight);
+    });
+
     p.draw = () => {
+
       p.background(233, 43, 233);
 
-      starA(Math.round(p.random(0, canvasWidth)), Math.round(p.random(0, canvasHeight)));
-      starA(Math.round(p.random(0, canvasWidth)), Math.round(p.random(0, canvasHeight)));
-      starA(Math.round(p.random(0, canvasWidth)), Math.round(p.random(0, canvasHeight)));
-      starA(Math.round(p.random(0, canvasWidth)), Math.round(p.random(0, canvasHeight)));
-      starA(Math.round(p.random(0, canvasWidth)), Math.round(p.random(0, canvasHeight)));
-      starA(Math.round(p.random(0, canvasWidth)), Math.round(p.random(0, canvasHeight)));
-      starA(Math.round(p.random(0, canvasWidth)), Math.round(p.random(0, canvasHeight)));
-      starA(Math.round(p.random(0, canvasWidth)), Math.round(p.random(0, canvasHeight)));
-      starA(Math.round(p.random(0, canvasWidth)), Math.round(p.random(0, canvasHeight)));
-      starA(Math.round(p.random(0, canvasWidth)), Math.round(p.random(0, canvasHeight)));
-      starA(Math.round(p.random(0, canvasWidth)), Math.round(p.random(0, canvasHeight)));
-      starA(Math.round(p.random(0, canvasWidth)), Math.round(p.random(0, canvasHeight)));
-      starA(Math.round(p.random(0, canvasWidth)), Math.round(p.random(0, canvasHeight)));
-      starA(Math.round(p.random(0, canvasWidth)), Math.round(p.random(0, canvasHeight)));
-      starA(Math.round(p.random(0, canvasWidth)), Math.round(p.random(0, canvasHeight)));
-      starA(Math.round(p.random(0, canvasWidth)), Math.round(p.random(0, canvasHeight)));
-      starA(Math.round(p.random(0, canvasWidth)), Math.round(p.random(0, canvasHeight)));
-      starA(Math.round(p.random(0, canvasWidth)), Math.round(p.random(0, canvasHeight)));
-
-
+      stars.forEach(star => starA(star.x, star.y));
 
     };
 
@@ -78,7 +64,19 @@ export class AnimatedMessageComponent implements OnInit, OnDestroy {
       p.push();
       p.noStroke();
       p.fill(p.color('#ffff00'));
+      var choice = Math.round(p.random(4));
+      if(choice == 0) {
+        starX = starX  + 2;
+      } else if (choice == 1) {
+        starX = starX - 2;
+      } else if (choice == 2) {
+        starY = starY + 2;
+      } else {
+        starY = starY - 2;
+      }
       star(starX, starY, 5, 10, 5);
+      star(starX, starY, 5, 10, 5);
+
       p.pop();
     }
 
@@ -98,5 +96,9 @@ export class AnimatedMessageComponent implements OnInit, OnDestroy {
     }
   };
 
-
+  private getRandomXY (p: any, canvasWidth, canvasHeight) {
+    var x = Math.round(p.random(0, canvasWidth));
+    var y = Math.round(p.random(0, canvasHeight));
+    return { x, y };
+  }
 }

@@ -45,7 +45,7 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   private createCanvas(): void {
-    this._sketch = new sketch(this.mandala.bind(this));
+    this._sketch = new sketch(this.mandala);
     if (this.isAnimated) {
       return
     }
@@ -69,7 +69,7 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
     this._h = obj[highlight][0];
   }
 
-  public mandala = function (p: any) {
+  public mandala = (p: any) => {
 
     let canvasSize = window.innerWidth;
 
