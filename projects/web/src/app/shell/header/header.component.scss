@@ -100,7 +100,7 @@ app-header:host {
   display: block;
   width: 100%;
   position: absolute;
-  height: 200px;
+  height: 190px;
   background-color: var(--homepage-background-color);
   z-index: -1;
 
@@ -120,6 +120,6 @@ app-header:host {
 
   a.header__mobile-active-route {
     color: var(--homepage-logo-color);
-    border-left: 8px var() solid;
+    border-left: 8px var(--homepage-logo-color) solid;
   }
 }
