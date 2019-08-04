@@ -1,3 +1,20 @@
 app-about-me:host {
   display: block;
+  padding-top: 56px;
+}
+
+.about-me__subnav {
+  background-color: var(--dark-color);
+  height: 30px;
+  padding-right: 48px;
+  padding-left: 48px;
+  padding-top: 30px;
+  text-align: right;
+
+  a {
+    text-decoration: none;
+    padding-left: 16px;
+    padding-right: 16px;
+    color: #fff;
+  }
 }
