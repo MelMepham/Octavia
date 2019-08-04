@@ -45,6 +45,7 @@
 </header>
   <div
     *ngIf="isSmall"
+    (click)="toggleMobileMenu()"
     [ngClass]="isMobileMenuOpen ? 'header__grid-container-is-open-mobile':'header__grid-container-is-not-open-mobile'"
     class="header__grid-container-mobile">
     <a

@@ -1,9 +1,9 @@
 app-shell:host {
   display: block;
   position: relative;
-  min-height: 100vh;
+  min-height: calc(100vh - 50px);
   padding-bottom: 50px;
-
   --dark-color: blue;
   --light-color: green;
+
 }
