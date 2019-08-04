@@ -16,6 +16,9 @@
 
     &:hover {
         background-color: var(--btn-primary-300);
+        box-shadow: 0px 0px var(--btn-primary-700);
+        transform: translateY(2px);
+        transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
     }
     &:active {
         box-shadow: 2px 2px var(--btn-primary-700);
@@ -24,12 +27,18 @@
     }
 }
 
-.oct-button:hover {
-    box-shadow: 0px 0px var(--btn-primary-700);
-    transform: translateY(2px);
-    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+.oct-button__transparent {
+    background: none;
+    border: 0;
+    color: inherit;
+    padding: 0;
+    overflow: visible;
+    line-height: normal;
+    box-shadow: 0px 0px transparent;
+
+    &:hover {
+        background: none;
+        transform: translateY(0);
+    }
 }
 
-.oct-button__transparent {
-    border: 2px red solid;
-}

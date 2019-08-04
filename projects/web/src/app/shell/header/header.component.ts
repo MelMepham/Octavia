@@ -9,6 +9,7 @@ import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 export class HeaderComponent implements OnInit {
 
   public isSmall: boolean;
+  public isMobileMenuOpen = false;
 
   constructor(
     private _breakpointObserver: BreakpointObserver
@@ -20,10 +21,11 @@ export class HeaderComponent implements OnInit {
       .observe(['(min-width: 600px)'])
       .subscribe((state: BreakpointState) => {
         this.isSmall = state.matches ? false : true;
+        this.isMobileMenuOpen = false;
       });
   }
 
   public toggleMobileMenu() {
-    console.log('click')
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
 }

@@ -33,25 +33,25 @@ app-header:host {
   align-items: center;
   height: 100%;
 
-}
+  a {
+    float: right;
+    padding: 16px;
+    padding-bottom: 24px;
+    padding-top: 24px;
+    text-decoration: none;
+    color: var(--homepage-logo-color);
+    border-bottom: 8px var(--homepage-background-color) solid;
+  }
 
-a {
-  float: right;
-  padding: 16px;
-  padding-bottom: 24px;
-  padding-top: 24px;
-  text-decoration: none;
-  color: var(--homepage-logo-color);
-  border-bottom: 8px var(--homepage-background-color) solid;
-}
+  a:hover {
+    border-bottom: 8px var(--homepage-logo-color) solid;
+  }
 
-a:hover {
-  border-bottom: 8px var(--homepage-logo-color) solid;
-}
+  a.header__active-route {
+    color: var(--homepage-logo-color);
+    border-bottom: 8px var(--homepage-logo-color) solid;
+  }
 
-a.header__active-route {
-  color: var(--homepage-logo-color);
-  border-bottom: 8px var(--homepage-logo-color) solid;
 }
 
 .header__grid-container-items-link-list {
@@ -65,18 +65,13 @@ a.header__active-route {
     height: 45px;
   }
 }
-
-.header__grid-container-mobile {
-  display: grid;
-  grid-template-columns: 100%;
+.header__mobile {
+  z-index: 1;
+  background-color: var(--homepage-background-color);
+  height: 56px;
   padding-left: 24px;
   padding-right: 24px;
   padding-bottom: 16px;
-  background-color: var(--homepage-background-color);
-  align-items: center;
-  word-wrap: break-word;
-  color: var(--homepage-logo-color);
-  height: 56px;
 }
 
 .header__grid-logo-mobile {
@@ -88,12 +83,43 @@ a.header__active-route {
 
 }
 
-.header__logo-button-mobile {
-  //background: none;
-  //border: 0;
-  //color: inherit;
-  //padding: 0;
-  //overflow: visible;
-  //line-height: normal;
+.header__grid-container-is-open-mobile {
+  transform: translateY(0);
+  transition: transform 0.6s ease-in-out;
 
+
+}
+
+.header__grid-container-is-not-open-mobile {
+  transform: translateY(-500px);
+  transition: transform 0.6s ease-in-out;
+}
+
+.header__grid-container-mobile {
+  opacity: .9;
+  display: block;
+  width: 100%;
+  position: absolute;
+  height: 200px;
+  background-color: var(--homepage-background-color);
+  z-index: -1;
+
+  a {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    display: block;
+    padding-left: 24px;
+    text-decoration: none;
+    color: var(--homepage-logo-color);
+    border-left: 8px var(--homepage-background-color) solid;
+  }
+
+  a:hover {
+    border-left: 8px var(--homepage-logo-color) solid;
+  }
+
+  a.header__mobile-active-route {
+    color: var(--homepage-logo-color);
+    border-left: 8px var() solid;
+  }
 }

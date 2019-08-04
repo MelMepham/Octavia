@@ -13,7 +13,6 @@ export class ButtonComponent implements OnInit {
 
   @Input('transparent')
   set transparent(value: boolean) {
-    this._transparent = value;
     this._transparent = !value ? true : value;
   }
 

@@ -30,17 +30,33 @@
 
 <header
   *ngIf="isSmall"
-  class="header__grid-container-mobile">
+  class="header__mobile">
   <div
     class="header__grid-logo-mobile">
     <button
       octButton
       transparent
-      (click)="toggleMobileMenu()"
-      class="header__logo-button-mobile">
+      (click)="toggleMobileMenu()">
     <app-logo
       class="header__logo"></app-logo>
     </button>
     Melissa Mepham
   </div>
 </header>
+  <div
+    *ngIf="isSmall"
+    [ngClass]="isMobileMenuOpen ? 'header__grid-container-is-open-mobile':'header__grid-container-is-not-open-mobile'"
+    class="header__grid-container-mobile">
+    <a
+      routerLink="/about"
+      routerLinkActive="header__mobile-active-route">About</a>
+    <a
+      routerLink="/fun"
+      routerLinkActive="header__mobile-active-route">Fun stuff</a>
+    <a
+      routerLink="/blog"
+      routerLinkActive="header__mobile-active-route">Blog</a>
+    <a
+      routerLink="/home"
+      routerLinkActive="header__mobile-active-route">Home</a>
+  </div>
