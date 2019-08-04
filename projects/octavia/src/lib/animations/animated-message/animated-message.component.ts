@@ -75,26 +75,10 @@ export class AnimatedMessageComponent implements OnInit, OnDestroy {
     };
 
     function starA(starX, starY) {
-
-
       p.push();
       p.noStroke();
       p.fill(p.color('#ffff00'));
-      var choice = Math.round(p.random(4));
-      if(choice == 0) {
-        starX = starX  + 2;
-      } else if (choice == 1) {
-        starX = starX - 2;
-      } else if (choice == 2) {
-        starY = starY + 2;
-      } else {
-        starY = starY - 2;
-      }
       star(starX, starY, 5, 10, 5);
-      star(starX, starY, 5, 10, 5);
-
-
-
       p.pop();
     }
 
