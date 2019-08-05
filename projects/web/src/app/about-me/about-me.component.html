@@ -8,16 +8,21 @@
     routerLink="." fragment="contact">Contact me</a>
 </div>
 
-<div
-  class="about-me__container">
-  <p>
-    Thanks for coming and checking out my page, here you will find a bunch of things you
-  </p>
+<Oct-animated-message
+  class="about-me__animated-message"
+  [isAnimated]="shouldAnimate">
+  Hello.
+</Oct-animated-message>
+<!--<div-->
+<!--  class="about-me__container">-->
+<!--  <p>-->
+<!--    Thanks for coming and checking out my page, here you will find a bunch of things you-->
+<!--  </p>-->
 
-  <Oct-animated-message></Oct-animated-message>
-  <app-cv></app-cv>
 
-  <app-exhibitions></app-exhibitions>
+<!--  <app-cv></app-cv>-->
 
-  <app-contact></app-contact>
-</div>
+<!--  <app-exhibitions></app-exhibitions>-->
+
+<!--  <app-contact></app-contact>-->
+<!--</div>-->

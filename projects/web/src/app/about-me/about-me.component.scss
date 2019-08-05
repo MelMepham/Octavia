@@ -8,6 +8,15 @@ app-about-me:host {
   padding-right: 48px;
 }
 
+.about-me__animated-message {
+  //width: 60%;
+  //height: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 48px;
+  margin-bottom:48px;
+}
+
 .about-me__subnav {
   background-color: var(--dark-color);
   height: 30px;

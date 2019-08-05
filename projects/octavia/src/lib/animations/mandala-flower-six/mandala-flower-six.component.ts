@@ -160,6 +160,7 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
 
     // lets actually draw something now.
     p.draw = () => {
+
       p.background(255, 255, 255);
       p.center.x = p.width / 2;
       p.center.y = p.height / 2;

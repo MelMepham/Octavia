@@ -1,19 +1,42 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
 import * as sketch from 'p5';
+import { ColorsEnum } from "../../styles/colors.enum";
 
 @Component({
   selector: 'Oct-animated-message',
   templateUrl: './animated-message.component.html',
   styleUrls: ['./animated-message.component.scss']
 })
-export class AnimatedMessageComponent implements OnInit, OnDestroy {
+export class AnimatedMessageComponent implements OnInit, OnDestroy, OnChanges {
 
   private _sketch;
+  private _star;
+  private _background;
+
+  @Input() isAnimated = true;
+  @Input() starColor = "yellow";
+  @Input() backgroundColor = "pink";
+
+  @Input() height = window.innerHeight / 5;
+  @Input() width = window.innerWidth / 5;
+  @Input() starSizes = window.innerWidth / 300;
 
   constructor() { }
 
+  public isOverflown(element) {
+    return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+  }
+
   public ngOnInit() {
+    this._getColors(ColorsEnum, this.starColor, this.backgroundColor);
     this.createCanvas();
+
+  }
+
+  public ngOnChanges(changes: SimpleChanges) {
+    if (changes.isAnimated) {
+      this.checkIsAnimated(this.isAnimated);
+    }
   }
 
   public ngOnDestroy(): void {
@@ -22,68 +45,72 @@ export class AnimatedMessageComponent implements OnInit, OnDestroy {
 
   private createCanvas(): void {
     this._sketch = new sketch(this.animatedMessage);
+    if (this.isAnimated) {
+      return
+    }
+    this.checkIsAnimated(this.isAnimated);
   }
 
   private destroyCanvas(): void {
     this._sketch.noCanvas();
   }
 
+  private checkIsAnimated(val: boolean) {
+    if (this._sketch) {
+      val ? this._sketch.loop() : this._sketch.noLoop();
+    }
+    return;
+  }
+
+  private _getColors(obj, star, background) {
+    this._star = obj[star][0];
+    this._background = obj[background][0];
+  }
+
   public animatedMessage = (p: any) => {
 
-    let canvasWidth = window.innerWidth / 1.5;
-    let canvasHeight = window.innerWidth / 3;
-
-    // setup vars
-    function calculateSizes() {
-    }
+    let canvasWidth = this.width;
+    let canvasHeight = this.height;
 
     // setup
     p.setup = () => {
-      p.frameRate(4);
 
       p.createCanvas(canvasWidth, canvasHeight).parent('animated-message');
-      calculateSizes();
       p.background(233, 43, 233)
-
     };
-    p.center = { x: 0, y: 0 };
 
-    const stars = [1,2,3].map(_ => {
+    const starsArray = Array.from(Array(200).keys());
+    const stars = starsArray.map(_ => {
         return this.getRandomXY(p, canvasWidth, canvasHeight);
     });
 
     p.draw = () => {
+      p.background(this._background['500']);
+      p.translate(canvasWidth / 2, canvasHeight / 2)
 
-      p.background(233, 43, 233);
-
-      stars.forEach(star => starA(star.x, star.y));
+      stars.forEach(position => starShape(position.x, position.y, this.starSizes, this.starSizes / 2, 5, this._star['400']))
 
     };
 
-    function starA(starX, starY) {
-      p.push();
-      p.noStroke();
-      p.fill(p.color('#ffff00'));
-      var choice = Math.round(p.random(4));
-      if(choice == 0) {
-        starX = starX  + 2;
-      } else if (choice == 1) {
-        starX = starX - 2;
-      } else if (choice == 2) {
-        starY = starY + 2;
-      } else {
-        starY = starY - 2;
-      }
-      star(starX, starY, 5, 10, 5);
-      star(starX, starY, 5, 10, 5);
-
-      p.pop();
-    }
-
-    function star(x, y, radius1, radius2, npoints) {
+    function starShape(x, y, radius1, radius2, npoints, color) {
+      p.rotate(p.radians(p.frameCount / 200) / - 1);
       let angle = p.TWO_PI / npoints;
       let halfAngle = angle / 2.0;
+
+      var choice = Math.round(p.random(8));
+
+      if(choice == (0 | 1) ) {
+        x = x + .2;
+      } else if (choice == (1 | 2)) {
+        x = x - .2;
+      } else if (choice == (3 | 4 | 5)) {
+        y = y - .2;
+      } else {
+        y = y + .2;
+      }
       p.beginShape();
+      p.noStroke();
+      p.fill(p.color(color));
       for (let a = 0; a < p.TWO_PI; a += angle) {
         let sx = x + p.cos(a) * radius2;
         let sy = y + p.sin(a) * radius2;
@@ -93,12 +120,13 @@ export class AnimatedMessageComponent implements OnInit, OnDestroy {
         p.vertex(sx, sy);
       }
       p.endShape(p.CLOSE);
+
     }
   };
 
   private getRandomXY (p: any, canvasWidth, canvasHeight) {
-    var x = Math.round(p.random(0, canvasWidth));
-    var y = Math.round(p.random(0, canvasHeight));
+    var x = Math.round(p.random(-canvasWidth, canvasWidth));
+    var y = Math.round(p.random(-canvasHeight, canvasHeight));
     return { x, y };
   }
 }

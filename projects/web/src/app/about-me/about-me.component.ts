@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Subject} from 'rxjs';
+import {AnimationService} from "../../services/animation.service";
+import {takeUntil} from "rxjs/operators";
 
 @Component({
   selector: 'app-about-me',
@@ -6,11 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about-me.component.scss']
 })
 export class AboutMeComponent implements OnInit {
+  private _destroyed$ = new Subject();
+  public shouldAnimate: boolean;
 
-  constructor() { }
+  constructor(
+    private _isAnimated: AnimationService
+  ) { }
 
-  ngOnInit() {
-
+  public ngOnInit() {
+    this._isAnimated.isAnimatedObservable$.pipe(
+      takeUntil(this._destroyed$)
+    ).subscribe(val => this.shouldAnimate = val)
   }
 
+  public ngOnDestroy() {
+    this._destroyed$.next();
+  }
 }
