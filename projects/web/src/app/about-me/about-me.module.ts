@@ -5,9 +5,9 @@ import { CvComponent } from './cv/cv.component';
 import { ExhibitionsComponent } from './exhibitions/exhibitions.component';
 import { ContactComponent } from './contact/contact.component';
 import { RouterModule } from '@angular/router';
-import { AnimatedMessageModule } from '../../../../octavia/src/public-api'
+import { BannerModule } from '../../../../octavia/src/public-api'
 
-// import {AnimatedMessageComponent} from '../../../../../animated-message/animated-message.component';
+// import {BannerComponent} from '../../../../../animated-message/animated-message.component';
 
 
 
@@ -25,7 +25,7 @@ import { AnimatedMessageModule } from '../../../../octavia/src/public-api'
       path: '',
       component: AboutMeComponent
     }]),
-    AnimatedMessageModule
+    BannerModule
 
   ],
   exports: [

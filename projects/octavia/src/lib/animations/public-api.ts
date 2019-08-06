@@ -1,2 +1,2 @@
 export { MandalaFlowerSixModule } from './mandala-flower-six/mandala-flower-six.module';
-export { AnimatedMessageModule } from './animated-message/animated-message.module';
+export { BannerModule } from './banner/banner.module';
