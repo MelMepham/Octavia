@@ -7,7 +7,7 @@ import {AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChil
 })
 
 
-export class BannerComponent implements OnInit, AfterViewInit {
+export class BannerComponent implements OnInit {
 
   @ViewChild('canvas', { static: true })
   canvas: ElementRef<HTMLCanvasElement>;
