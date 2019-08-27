@@ -9,8 +9,6 @@ import { BannerModule } from '../../../../octavia/src/public-api'
 
 // import {BannerComponent} from '../../../../../animated-message/animated-message.component';
 
-
-
 @NgModule({
   declarations: [
     AboutMeComponent,

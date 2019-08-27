@@ -5,6 +5,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { MandalaFlowerSixModule } from "../../../octavia/dist/octavia";
 import { AppComponent } from './app.component';
 import { ShellModule } from './shell/shell.module';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
+
 
 const routes: Routes = [
   {
@@ -27,6 +31,8 @@ const routes: Routes = [
 
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     BrowserModule,
     RouterModule.forRoot(routes),
     MandalaFlowerSixModule,
