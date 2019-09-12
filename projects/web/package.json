@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "Personal website",
   "scripts": {
+    "build": "ng build",
     "start": "ng serve --port 8400"
   },
   "dependencies": {
