@@ -1,6 +1,7 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "../../out-tsc/lib",
     "target": "es2015",
     "declaration": true,
@@ -9,7 +10,11 @@
     "lib": [
       "dom",
       "es2018"
-    ]
+    ],
+    "paths": {
+      "@octavia": ["./src"],
+      "@octavia/*": ["./src/*"]
+    }
   },
   "angularCompilerOptions": {
     "annotateForClosureCompiler": true,

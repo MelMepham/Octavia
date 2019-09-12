@@ -12,3 +12,9 @@ If you want to contribute feel free!
 ###### [secondaryColor]: String
 ###### [highlightColor]: String
 > Strings currently supported are "green", "pink", "blue", "yellow" and they haven't all been tested as working well together.
+
+
+#### Oct-mandala-flower-six
+
+###### [transparent]: boolean
+> takes off all styling of button

@@ -1,4 +1,4 @@
-import { Component, NgModule, Input } from '@angular/core';
+import { Component, ViewEncapsulation, HostBinding, NgModule, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as sketch from 'p5';
 
@@ -7,7 +7,18 @@ import * as sketch from 'p5';
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 class ButtonComponent {
-    constructor() { }
+    constructor() {
+        // get transparent(): boolean {return this._transparent;}
+        // public transparent: boolean;
+        // @Input('transparent')
+        // set setTransparent(value: boolean) {
+        // this.transparent = !value ? true : value;
+        // }
+        // @HostBinding('class.oct-button__transparent')
+        // get setTransparent(): boolean {return this.transparent;}
+        // public transparent: boolean;
+        this.isPureButton = true;
+    }
     /**
      * @return {?}
      */
@@ -16,13 +27,17 @@ class ButtonComponent {
 }
 ButtonComponent.decorators = [
     { type: Component, args: [{
-                selector: 'Oct-button',
-                template: "<button\n    class=\"oct-button__primary\">\n    <ng-content></ng-content>\n</button>\n",
-                styles: [".oct-button__primary{background-color:var(--btn-primary)}"]
+                selector: 'button[octButton]',
+                template: `<ng-content></ng-content>`,
+                encapsulation: ViewEncapsulation.None,
+                styles: [".oct-button{background-color:var(--btn-primary-100);color:var(--btn-primary-700);padding:8px 6px 6px;border-radius:6px;border:2px solid var(--btn-primary-700);text-align:center;box-shadow:0 2px var(--btn-primary-700);transform:translateY(0);transition:box-shadow .3s ease-in-out,transform .3s ease-in-out}.oct-button:hover{background-color:var(--btn-primary-300);box-shadow:0 0 var(--btn-primary-700);transform:translateY(2px);transition:box-shadow .3s ease-in-out,transform .3s ease-in-out}.oct-button:active{box-shadow:2px 2px var(--btn-primary-700);background-color:var(--btn-primary-700);color:var(--btn-primary-100)}.oct-button__transparent{background:0 0;border:0;color:inherit;padding:0;overflow:visible;line-height:normal;box-shadow:0 0 transparent}.oct-button__transparent:hover{background:0 0;transform:translateY(0)}"]
             }] }
 ];
 /** @nocollapse */
 ButtonComponent.ctorParameters = () => [];
+ButtonComponent.propDecorators = {
+    isPureButton: [{ type: HostBinding, args: ['class.oct-button',] }]
+};
 
 /**
  * @fileoverview added by tsickle
@@ -110,7 +125,7 @@ class MandalaFlowerSixComponent {
          * @param {?} p
          * @return {?}
          */
-        function (p) {
+        (p) => {
             /** @type {?} */
             let canvasSize = window.innerWidth;
             // mandala objects
@@ -173,21 +188,21 @@ class MandalaFlowerSixComponent {
             /** @type {?} */
             let trianglex3;
             /** @type {?} */
-            var waterDropletY2;
+            let waterDropletY2;
             /** @type {?} */
-            var waterDropletY1;
+            let waterDropletY1;
             /** @type {?} */
-            var waterDropletX2;
+            let waterDropletX2;
             /** @type {?} */
-            var waterDropletCircleC;
+            let waterDropletCircleC;
             /** @type {?} */
-            var waterDropletCircleY;
+            let waterDropletCircleY;
             /** @type {?} */
-            var waterDropletLittleY2;
+            let waterDropletLittleY2;
             /** @type {?} */
-            var waterDropletLittleY1;
+            let waterDropletLittleY1;
             /** @type {?} */
-            var waterDropletLittleX2;
+            let waterDropletLittleX2;
             /** @type {?} */
             let curve;
             /** @type {?} */
@@ -266,7 +281,6 @@ class MandalaFlowerSixComponent {
              */
             () => {
                 p.createCanvas(canvasSize, canvasSize).parent('forest-mandala');
-                console.log('setup', canvasSize);
                 p.angleMode(p.DEGREES);
                 calculateSizes();
             });
@@ -576,7 +590,6 @@ class MandalaFlowerSixComponent {
      * @return {?}
      */
     ngOnInit() {
-        //TODO can not build this color info up from the json - wont do an npm build
         this._getColors(ColorsEnum, this.primaryColor, this.secondaryColor, this.highlightColor);
         this.createCanvas();
     }
@@ -600,7 +613,7 @@ class MandalaFlowerSixComponent {
      * @return {?}
      */
     createCanvas() {
-        this._sketch = new sketch(this.mandala.bind(this));
+        this._sketch = new sketch(this.mandala);
         if (this.isAnimated) {
             return;
         }
@@ -672,5 +685,54 @@ MandalaFlowerSixModule.decorators = [
             },] }
 ];
 
-export { ButtonModule, MandalaFlowerSixModule, ButtonComponent as ɵa, MandalaFlowerSixComponent as ɵb };
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class BannerComponent {
+    // @ViewChild('canvas', { static: true })
+    // canvas: ElementRef<HTMLCanvasElement>;
+    // private ctx: CanvasRenderingContext2D;
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
+        // this.ctx = this.canvas.nativeElement.getContext('2d');
+        // console.log(this.ctx)
+    }
+    /**
+     * @return {?}
+     */
+    animate() {
+    }
+}
+BannerComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'Oct-banner',
+                template: "        <canvas #canvas width=\"400\" height=\"300\"></canvas>\n    <div\n        class=\"Oct-banner__animation-container\">\n\n    </div>\n\n\n    <div\n        class=\"Oct-animated-message__text\">\n        <ng-content></ng-content>\n    </div>\n",
+                styles: ["Oct-animated-message:host{display:block}.Oct-banner__animation-container{position:absolute;background-color:pink}.Oct-animated-message__text{position:absolute}"]
+            }] }
+];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class BannerModule {
+}
+BannerModule.decorators = [
+    { type: NgModule, args: [{
+                declarations: [
+                    BannerComponent
+                ],
+                imports: [
+                    CommonModule
+                ],
+                exports: [
+                    BannerComponent
+                ]
+            },] }
+];
+
+export { BannerModule, ButtonModule, MandalaFlowerSixModule, ButtonComponent as ɵa, MandalaFlowerSixComponent as ɵb, BannerComponent as ɵc };
 //# sourceMappingURL=octavia.js.map

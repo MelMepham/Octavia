@@ -13,9 +13,6 @@ import { BannerComponent } from './banner.component';
   ],
   exports: [
       BannerComponent
-  ],
-    providers: [
-        HTMLCanvasElement
-    ]
+  ]
 })
 export class BannerModule { }

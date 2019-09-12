@@ -18,10 +18,10 @@ import { ColorsEnum } from "../../styles/colors.enum";
 })
 export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
 
-  private _sketch;
-  private _p;
-  private _s;
-  private _h;
+  private _sketch: any;
+  private _p: any;
+  private _s: any;
+  private _h: any;
 
   @Input() isAnimated = true;
 
@@ -63,7 +63,7 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
     return;
   }
 
-  private _getColors(obj, primary, secondary, highlight) {
+  private _getColors(obj: any, primary: any, secondary: any, highlight: any) {
     this._p = obj[primary][0];
     this._s = obj[secondary][0];
     this._h = obj[highlight][0];
@@ -74,23 +74,23 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
     let canvasSize = window.innerWidth;
 
   // mandala objects
-    let petal;
-    let flowerX1, flowerY1, flowerY2, flowerCircle;
-    let Atrianglex1, Atriangley1, Atriangley2, Btriangley1;
-    let Ctrianglex1, Ctriangley1, Ctriangley2;
-    let AcircleSize, AcircleX;
-    let BcircleX, BcircleSize;
-    let CCircleWH, CCircleY, DCircleWH;
-    let ECircleHW;
-    let outerTripleCirclesBigX, outerTripleCirclesBigC, outerTripleCirlcesMidC, outerTripleCirclesMidSmlX, outerTripleCirclesSmlC;
-    let bigCircleC;
-    let trianglex1, triangley1, trianglex3;
-    var waterDropletY2, waterDropletY1, waterDropletX2;
-    var waterDropletCircleC,  waterDropletCircleY;
-    var waterDropletLittleY2, waterDropletLittleY1, waterDropletLittleX2;
-    let curve, curvePointX, curvePointY;
-    let biggestCircle, nearlyBiggestCircle;
-    let circleInCurvedTriangles, smallCurvedTriangleStartPoint, smallCurvedTrianglesmallestControlPoint, smallCurvedTriangleHeight, smallCurvedTriangleHighestHeight;
+    let petal: any;
+    let flowerX1: any, flowerY1: any, flowerY2: any, flowerCircle: any;
+    let Atrianglex1: any, Atriangley1: any, Atriangley2: any, Btriangley1: any;
+    let Ctrianglex1: any, Ctriangley1: any, Ctriangley2: any;
+    let AcircleSize: any, AcircleX: any;
+    let BcircleX: any, BcircleSize: any;
+    let CCircleWH: any, CCircleY: any, DCircleWH: any;
+    let ECircleHW: any;
+    let outerTripleCirclesBigX: any, outerTripleCirclesBigC: any, outerTripleCirlcesMidC: any, outerTripleCirclesMidSmlX: any, outerTripleCirclesSmlC: any;
+    let bigCircleC: any;
+    let trianglex1: any, triangley1: any, trianglex3: any;
+    let waterDropletY2: any, waterDropletY1: any, waterDropletX2: any;
+    let waterDropletCircleC: any,  waterDropletCircleY: any;
+    let waterDropletLittleY2: any, waterDropletLittleY1: any, waterDropletLittleX2: any;
+    let curve: any, curvePointX: any, curvePointY: any;
+    let biggestCircle: any, nearlyBiggestCircle: any;
+    let circleInCurvedTriangles: any, smallCurvedTriangleStartPoint: any, smallCurvedTrianglesmallestControlPoint: any, smallCurvedTriangleHeight: any, smallCurvedTriangleHighestHeight: any;
 
     // setup vars
     function calculateSizes() {
@@ -146,8 +146,6 @@ export class MandalaFlowerSixComponent implements OnInit, OnDestroy, OnChanges {
       smallCurvedTrianglesmallestControlPoint = canvasSize / 29;
       smallCurvedTriangleHeight = canvasSize / 2.8;
       smallCurvedTriangleHighestHeight = canvasSize / 2.26;
-
-
     }
 
     // setup

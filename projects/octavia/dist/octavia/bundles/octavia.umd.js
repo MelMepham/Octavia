@@ -1,15 +1,40 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common'), require('p5')) :
     typeof define === 'function' && define.amd ? define('octavia', ['exports', '@angular/core', '@angular/common', 'p5'], factory) :
-    (global = global || self, factory(global.octavia = {}, global.ng.core, global.ng.common, global.sketch));
-}(this, function (exports, core, common, sketch) { 'use strict';
+    (global = global || self, factory(global.octavia = {}, global.ng.core, global.ng.common, global.p5));
+}(this, function (exports, core, common, p5) { 'use strict';
 
+    core = core && core.hasOwnProperty('default') ? core['default'] : core;
+    common = common && common.hasOwnProperty('default') ? common['default'] : common;
+    p5 = p5 && p5.hasOwnProperty('default') ? p5['default'] : p5;
+
+    function unwrapExports (x) {
+    	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+    }
+
+    function createCommonjsModule(fn, module) {
+    	return module = { exports: {} }, fn(module, module.exports), module.exports;
+    }
+
+    var button_component = createCommonjsModule(function (module, exports) {
     /**
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
+    Object.defineProperty(exports, "__esModule", { value: true });
+
     var ButtonComponent = /** @class */ (function () {
         function ButtonComponent() {
+            // get transparent(): boolean {return this._transparent;}
+            // public transparent: boolean;
+            // @Input('transparent')
+            // set setTransparent(value: boolean) {
+            // this.transparent = !value ? true : value;
+            // }
+            // @HostBinding('class.oct-button__transparent')
+            // get setTransparent(): boolean {return this.transparent;}
+            // public transparent: boolean;
+            this.isPureButton = true;
         }
         /**
          * @return {?}
@@ -21,45 +46,82 @@
         };
         ButtonComponent.decorators = [
             { type: core.Component, args: [{
-                        selector: 'Oct-button',
-                        template: "<button\n    class=\"oct-button__primary\">\n    <ng-content></ng-content>\n</button>\n",
-                        styles: [".oct-button__primary{background-color:var(--btn-primary)}"]
+                        selector: 'button[octButton]',
+                        template: "<ng-content></ng-content>",
+                        encapsulation: core.ViewEncapsulation.None,
+                        styles: [".oct-button{background-color:var(--btn-primary-100);color:var(--btn-primary-700);padding:8px 6px 6px;border-radius:6px;border:2px solid var(--btn-primary-700);text-align:center;box-shadow:0 2px var(--btn-primary-700);transform:translateY(0);transition:box-shadow .3s ease-in-out,transform .3s ease-in-out}.oct-button:hover{background-color:var(--btn-primary-300);box-shadow:0 0 var(--btn-primary-700);transform:translateY(2px);transition:box-shadow .3s ease-in-out,transform .3s ease-in-out}.oct-button:active{box-shadow:2px 2px var(--btn-primary-700);background-color:var(--btn-primary-700);color:var(--btn-primary-100)}.oct-button__transparent{background:0 0;border:0;color:inherit;padding:0;overflow:visible;line-height:normal;box-shadow:0 0 transparent}.oct-button__transparent:hover{background:0 0;transform:translateY(0)}"]
                     }] }
         ];
         /** @nocollapse */
         ButtonComponent.ctorParameters = function () { return []; };
+        ButtonComponent.propDecorators = {
+            isPureButton: [{ type: core.HostBinding, args: ['class.oct-button',] }]
+        };
         return ButtonComponent;
     }());
+    exports.ButtonComponent = ButtonComponent;
 
+    });
+
+    unwrapExports(button_component);
+    var button_component_1 = button_component.ButtonComponent;
+
+    var button_module = createCommonjsModule(function (module, exports) {
     /**
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
+    Object.defineProperty(exports, "__esModule", { value: true });
+
+
+
     var ButtonModule = /** @class */ (function () {
         function ButtonModule() {
         }
         ButtonModule.decorators = [
             { type: core.NgModule, args: [{
                         declarations: [
-                            ButtonComponent
+                            button_component.ButtonComponent
                         ],
                         imports: [
                             common.CommonModule
                         ],
                         exports: [
-                            ButtonComponent
+                            button_component.ButtonComponent
                         ]
                     },] }
         ];
         return ButtonModule;
     }());
+    exports.ButtonModule = ButtonModule;
 
+    });
+
+    unwrapExports(button_module);
+    var button_module_1 = button_module.ButtonModule;
+
+    var publicApi = createCommonjsModule(function (module, exports) {
     /**
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
+    Object.defineProperty(exports, "__esModule", { value: true });
+
+    exports.ButtonModule = button_module.ButtonModule;
+
+    });
+
+    unwrapExports(publicApi);
+    var publicApi_1 = publicApi.ButtonModule;
+
+    var colors_enum = createCommonjsModule(function (module, exports) {
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    Object.defineProperty(exports, "__esModule", { value: true });
     /** @type {?} */
-    var ColorsEnum = {
+    exports.ColorsEnum = {
         'pink': [
             {
                 '100': '#FFF0F7',
@@ -106,12 +168,23 @@
         ]
     };
 
+    });
+
+    unwrapExports(colors_enum);
+    var colors_enum_1 = colors_enum.ColorsEnum;
+
+    var mandalaFlowerSix_component = createCommonjsModule(function (module, exports) {
     /**
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
+    Object.defineProperty(exports, "__esModule", { value: true });
+
+
+
     var MandalaFlowerSixComponent = /** @class */ (function () {
         function MandalaFlowerSixComponent() {
+            var _this = this;
             this.isAnimated = true;
             this.primaryColor = "green";
             this.secondaryColor = "blue";
@@ -121,7 +194,6 @@
              * @return {?}
              */
             function (p) {
-                var _this = this;
                 /** @type {?} */
                 var canvasSize = window.innerWidth;
                 // mandala objects
@@ -277,7 +349,6 @@
                  */
                 function () {
                     p.createCanvas(canvasSize, canvasSize).parent('forest-mandala');
-                    console.log('setup', canvasSize);
                     p.angleMode(p.DEGREES);
                     calculateSizes();
                 });
@@ -590,8 +661,7 @@
          * @return {?}
          */
         function () {
-            //TODO can not build this color info up from the json - wont do an npm build
-            this._getColors(ColorsEnum, this.primaryColor, this.secondaryColor, this.highlightColor);
+            this._getColors(colors_enum.ColorsEnum, this.primaryColor, this.secondaryColor, this.highlightColor);
             this.createCanvas();
         };
         /**
@@ -625,7 +695,7 @@
          * @return {?}
          */
         function () {
-            this._sketch = new sketch(this.mandala.bind(this));
+            this._sketch = new p5(this.mandala);
             if (this.isAnimated) {
                 return;
             }
@@ -694,34 +764,205 @@
         };
         return MandalaFlowerSixComponent;
     }());
+    exports.MandalaFlowerSixComponent = MandalaFlowerSixComponent;
 
+    });
+
+    unwrapExports(mandalaFlowerSix_component);
+    var mandalaFlowerSix_component_1 = mandalaFlowerSix_component.MandalaFlowerSixComponent;
+
+    var mandalaFlowerSix_module = createCommonjsModule(function (module, exports) {
     /**
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
+    Object.defineProperty(exports, "__esModule", { value: true });
+
+
+
     var MandalaFlowerSixModule = /** @class */ (function () {
         function MandalaFlowerSixModule() {
         }
         MandalaFlowerSixModule.decorators = [
             { type: core.NgModule, args: [{
                         declarations: [
-                            MandalaFlowerSixComponent
+                            mandalaFlowerSix_component.MandalaFlowerSixComponent
                         ],
                         imports: [
                             common.CommonModule,
                         ],
                         exports: [
-                            MandalaFlowerSixComponent
+                            mandalaFlowerSix_component.MandalaFlowerSixComponent
                         ]
                     },] }
         ];
         return MandalaFlowerSixModule;
     }());
-
-    exports.ButtonModule = ButtonModule;
     exports.MandalaFlowerSixModule = MandalaFlowerSixModule;
-    exports.ɵa = ButtonComponent;
-    exports.ɵb = MandalaFlowerSixComponent;
+
+    });
+
+    unwrapExports(mandalaFlowerSix_module);
+    var mandalaFlowerSix_module_1 = mandalaFlowerSix_module.MandalaFlowerSixModule;
+
+    var banner_component = createCommonjsModule(function (module, exports) {
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    Object.defineProperty(exports, "__esModule", { value: true });
+
+    var BannerComponent = /** @class */ (function () {
+        function BannerComponent() {
+        }
+        // @ViewChild('canvas', { static: true })
+        // canvas: ElementRef<HTMLCanvasElement>;
+        // private ctx: CanvasRenderingContext2D;
+        // @ViewChild('canvas', { static: true })
+        // canvas: ElementRef<HTMLCanvasElement>;
+        // private ctx: CanvasRenderingContext2D;
+        /**
+         * @return {?}
+         */
+        BannerComponent.prototype.ngOnInit = 
+        // @ViewChild('canvas', { static: true })
+        // canvas: ElementRef<HTMLCanvasElement>;
+        // private ctx: CanvasRenderingContext2D;
+        /**
+         * @return {?}
+         */
+        function () {
+            // this.ctx = this.canvas.nativeElement.getContext('2d');
+            // console.log(this.ctx)
+        };
+        /**
+         * @return {?}
+         */
+        BannerComponent.prototype.animate = /**
+         * @return {?}
+         */
+        function () {
+        };
+        BannerComponent.decorators = [
+            { type: core.Component, args: [{
+                        selector: 'Oct-banner',
+                        template: "        <canvas #canvas width=\"400\" height=\"300\"></canvas>\n    <div\n        class=\"Oct-banner__animation-container\">\n\n    </div>\n\n\n    <div\n        class=\"Oct-animated-message__text\">\n        <ng-content></ng-content>\n    </div>\n",
+                        styles: ["Oct-animated-message:host{display:block}.Oct-banner__animation-container{position:absolute;background-color:pink}.Oct-animated-message__text{position:absolute}"]
+                    }] }
+        ];
+        return BannerComponent;
+    }());
+    exports.BannerComponent = BannerComponent;
+
+    });
+
+    unwrapExports(banner_component);
+    var banner_component_1 = banner_component.BannerComponent;
+
+    var banner_module = createCommonjsModule(function (module, exports) {
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    Object.defineProperty(exports, "__esModule", { value: true });
+
+
+
+    var BannerModule = /** @class */ (function () {
+        function BannerModule() {
+        }
+        BannerModule.decorators = [
+            { type: core.NgModule, args: [{
+                        declarations: [
+                            banner_component.BannerComponent
+                        ],
+                        imports: [
+                            common.CommonModule
+                        ],
+                        exports: [
+                            banner_component.BannerComponent
+                        ]
+                    },] }
+        ];
+        return BannerModule;
+    }());
+    exports.BannerModule = BannerModule;
+
+    });
+
+    unwrapExports(banner_module);
+    var banner_module_1 = banner_module.BannerModule;
+
+    var publicApi$1 = createCommonjsModule(function (module, exports) {
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    Object.defineProperty(exports, "__esModule", { value: true });
+
+    exports.MandalaFlowerSixModule = mandalaFlowerSix_module.MandalaFlowerSixModule;
+
+    exports.BannerModule = banner_module.BannerModule;
+
+    });
+
+    unwrapExports(publicApi$1);
+    var publicApi_1$1 = publicApi$1.MandalaFlowerSixModule;
+    var publicApi_2 = publicApi$1.BannerModule;
+
+    var publicApi$2 = createCommonjsModule(function (module, exports) {
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    Object.defineProperty(exports, "__esModule", { value: true });
+    /*
+     * Public API Surface of octavia
+     */
+
+    exports.ButtonModule = publicApi.ButtonModule;
+
+    exports.MandalaFlowerSixModule = publicApi$1.MandalaFlowerSixModule;
+    exports.BannerModule = publicApi$1.BannerModule;
+
+    });
+
+    unwrapExports(publicApi$2);
+    var publicApi_1$2 = publicApi$2.ButtonModule;
+    var publicApi_2$1 = publicApi$2.MandalaFlowerSixModule;
+    var publicApi_3 = publicApi$2.BannerModule;
+
+    var octavia = createCommonjsModule(function (module, exports) {
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    Object.defineProperty(exports, "__esModule", { value: true });
+    /**
+     * Generated bundle index. Do not edit.
+     */
+
+    exports.ButtonModule = publicApi$2.ButtonModule;
+    exports.MandalaFlowerSixModule = publicApi$2.MandalaFlowerSixModule;
+    exports.BannerModule = publicApi$2.BannerModule;
+
+    exports.ɵc = banner_component.BannerComponent;
+
+    exports.ɵb = mandalaFlowerSix_component.MandalaFlowerSixComponent;
+
+    exports.ɵa = button_component.ButtonComponent;
+
+    });
+
+    var octavia$1 = unwrapExports(octavia);
+    var octavia_1 = octavia.ButtonModule;
+    var octavia_2 = octavia.MandalaFlowerSixModule;
+    var octavia_3 = octavia.BannerModule;
+
+    exports.BannerModule = octavia_3;
+    exports.ButtonModule = octavia_1;
+    exports.MandalaFlowerSixModule = octavia_2;
+    exports.default = octavia$1;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

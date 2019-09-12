@@ -4,7 +4,7 @@ import {AnimationService} from "../../services/animation.service";
 import {takeUntil} from "rxjs/operators";
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
-export interface Book { name: string; }
+// export interface Book { name: string; }
 
 
 @Component({
@@ -16,13 +16,13 @@ export class AboutMeComponent implements OnInit {
   private _destroyed$ = new Subject();
   public shouldAnimate: boolean;
 
-  public items: Observable<any[]>;
+  // public items: Observable<any[]>;
 
   constructor(
     private _isAnimated: AnimationService,
-    private _db: AngularFirestore
+    // private _db: AngularFirestore
   ) {
-    this.items = _db.collection('/books').valueChanges();
+    // this.items = _db.collection('/books').valueChanges();
     // console.log(this.items)
   }
 

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MandalaFlowerSixModule } from 'octavia/src/lib/animations/public-api';
+import { MandalaFlowerSixModule } from '@octavia/public-api';
 import { HomepageComponent } from './homepage.component';
 import { RouterModule } from '@angular/router';
 

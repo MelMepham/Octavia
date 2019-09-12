@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'Oct-banner',
@@ -9,14 +9,14 @@ import {AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChil
 
 export class BannerComponent implements OnInit {
 
-  @ViewChild('canvas', { static: true })
-  canvas: ElementRef<HTMLCanvasElement>;
+  // @ViewChild('canvas', { static: true })
+  // canvas: ElementRef<HTMLCanvasElement>;
 
-  private ctx: CanvasRenderingContext2D;
+  // private ctx: CanvasRenderingContext2D;
 
   ngOnInit(): void {
-    this.ctx = this.canvas.nativeElement.getContext('2d');
-    console.log(this.ctx)
+    // this.ctx = this.canvas.nativeElement.getContext('2d');
+    // console.log(this.ctx)
   }
 
   animate(): void {
