@@ -1,0 +1,37 @@
+app-login:host {
+  display:block;
+  padding-top: 100px;
+  color: var(--dark-color);
+}
+
+.login__container {
+  padding-left: 25%;
+  padding-right: 25%;
+  display: grid;
+}
+
+.login__label {
+  display: block;
+  width: 100%;
+}
+
+.login__input {
+  display: block;
+  box-sizing: border-box;
+  font-size: 12px;
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  padding: 12px;
+  border: 2px var(--dark-color) solid;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  --btn-primary-100: var(--light-color);
+  --btn-primary-300: #4ADD8C;
+  --btn-primary-700: var(--dark-color);
+
+}

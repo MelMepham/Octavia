@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import * as functions from 'firebase-functions';
-import { FirebaseFunctions } from '@angular/fire';
 
 
 @Component({
@@ -10,8 +8,4 @@ import { FirebaseFunctions } from '@angular/fire';
 })
 export class AppComponent {
 
-  public thing;
-
-  constructor() {
-  };
 }

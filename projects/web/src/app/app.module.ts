@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ShellModule } from './shell/shell.module';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 
 
@@ -18,11 +19,16 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: 'src/app/homepage/homepage.module#HomepageModule'
-},
+  },
   {
     path: 'about',
     loadChildren: 'src/app/about-me/about-me.module#AboutMeModule'
-  }];
+  },
+  {
+    path: 'login',
+    loadChildren: 'src/app/login/login.module#LoginModule'
+  }
+];
 
 @NgModule({
   declarations: [
@@ -35,7 +41,8 @@ const routes: Routes = [
     LayoutModule,
     ShellModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   exports: [
     RouterModule

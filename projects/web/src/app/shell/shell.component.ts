@@ -54,6 +54,9 @@ export class ShellComponent implements OnInit, OnDestroy {
     if (routeWithoutHash === '/about'){
       this.setStyles(this._themeService.about());
     }
+    if (routeWithoutHash === '/login'){
+      this.setStyles(this._themeService.login());
+    }
   }
   public setStyles(theme: {}) {
     this._darkColor = theme['--dark-color'];
