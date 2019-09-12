@@ -12,7 +12,8 @@
   "private": true,
   "workspaces": [
     "projects/web",
-    "projects/octavia"
+    "projects/octavia",
+    "projects/functions"
   ],
   "scripts": {
     "ng": "ng",
