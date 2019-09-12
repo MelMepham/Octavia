@@ -4,7 +4,7 @@
     LOGIN
   </h1>
   <form
-    (ngSubmit)="onSubmit()"
+    (ngSubmit)="onSubmit(login.value)"
     [formGroup]="login">
     <label
       class="login__label">
@@ -12,7 +12,7 @@
       <input
         class="login__input"
         type="text"
-        formControlName="name"
+        formControlName="email"
         required>
     </label>
     <label

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
+import {AuthService} from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-login',
@@ -8,17 +10,30 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
+  public errorMessage: string;
+  public successMessage: string;
+
   public login = new FormGroup({
-    name: new FormControl(''),
+    email: new FormControl(''),
     password: new FormControl('')
   });
 
-  public onSubmit() {
-
-  }
-  constructor() { }
+  constructor(private _authService: AuthService) { }
 
   ngOnInit() {
+  }
+
+  public onSubmit(value) {
+    this._authService.doLogin(value)
+      .then(res => {
+        console.log(res);
+        this.errorMessage = "";
+        this.successMessage = "Your account has been created";
+      }, err => {
+        console.log(err);
+        this.errorMessage = err.message;
+        this.successMessage = "";
+      })
   }
 
 }

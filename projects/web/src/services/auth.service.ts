@@ -1,17 +1,19 @@
 // import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+
 import { Injectable } from "@angular/core";
+import {AngularFireAuth} from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  public constructor() {}
+  public constructor(public afAuth: AngularFireAuth) {}
 
   public doLogin(value){
     return new Promise<any>((resolve, reject) => {
-      firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
+      this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password)
         .then(res => {
           resolve(res);
         }, err => reject(err))

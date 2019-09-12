@@ -48,6 +48,8 @@ const routes: Routes = [
     RouterModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+   ]
 })
 export class AppModule { }

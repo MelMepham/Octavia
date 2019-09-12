@@ -1,7 +1,4 @@
 @import url('../../styles/env.scss');
-:host {
-
-}
 
 .oct-button {
     background-color: var(--btn-primary-100);
@@ -24,6 +21,12 @@
         box-shadow: 2px 2px var(--btn-primary-700);
         background-color: var(--btn-primary-700);
         color: var(--btn-primary-100);
+    }
+    &:disabled {
+        box-shadow: none;
+        opacity: 80%;
+        transition: none;
+        transform: none;
     }
 }
 
