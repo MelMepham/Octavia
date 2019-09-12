@@ -16,14 +16,14 @@ export class AboutMeComponent implements OnInit {
   private _destroyed$ = new Subject();
   public shouldAnimate: boolean;
 
-  // public items: Observable<any[]>;
+  public items: Observable<any[]>;
 
   constructor(
     private _isAnimated: AnimationService,
-    // private _db: AngularFirestore
+    private _db: AngularFirestore
   ) {
-    // this.items = _db.collection('/books').valueChanges();
-    // console.log(this.items)
+    this.items = _db.collection('/books').valueChanges();
+    console.log(this.items)
   }
 
   public ngOnInit() {

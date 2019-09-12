@@ -33,8 +33,9 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes),
     LayoutModule,
-    ShellModule
-
+    ShellModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   exports: [
     RouterModule
