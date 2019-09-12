@@ -10,6 +10,11 @@ export const aboutMeTheme = {
   '--light-color': '#ffc1e3'
 };
 
+export const loginTheme = {
+  '--dark-color': '#1e530c',
+  '--light-color': '#38F689'
+};
+
 @Injectable({ providedIn: 'root' })
 
 export class ThemeService {
@@ -20,6 +25,10 @@ export class ThemeService {
 
   about() {
     return aboutMeTheme
+  }
+
+  login() {
+    return loginTheme
   }
 
 }
