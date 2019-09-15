@@ -26,6 +26,14 @@ app-login:host {
   border: 2px var(--dark-color) solid;
 }
 
+.login__input--invalid {
+  border: 2px #B22222 solid;
+}
+.login__input--invalid-text {
+  margin-bottom: 12px;
+  color: #B22222;
+}
+
 button {
   width: 100%;
   padding: 12px;

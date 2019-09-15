@@ -10,20 +10,38 @@
       class="login__label">
       E-mail Address:
       <input
-        class="login__input"
+        [ngClass]="{'login__input--invalid': email.invalid && (email.dirty || email.touched) }"
+        class="login__input login__input--email"
+        (blur)="onBlur()"
         type="text"
-        formControlName="email"
-        required>
+        formControlName="email">
     </label>
+    <div
+      class="login__input--invalid-text"
+      *ngIf="email.invalid && (email.dirty || email.touched)">
+      <small>
+        E-mail is invalid.
+      </small>
+    </div>
     <label
       class="login__label">
       Password:
       <input
+        [ngClass]="{'login__input--invalid': password.invalid && (password.dirty || password.touched) }"
         class="login__input"
         type="password"
-        formControlName="password"
-        required>
+        formControlName="password">
     </label>
+    <div
+      *ngIf="password.invalid && (password.dirty || password.touched)">
+      <div
+        class="login__input--invalid-text"
+        *ngIf="password.errors.required">
+        <small>
+          Password is required
+        </small>
+      </div>
+    </div>
     <button
       octButton
       type="submit"

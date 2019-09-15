@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
-import {AuthService} from '../../services/auth.service';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -8,19 +8,35 @@ import {AuthService} from '../../services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   public errorMessage: string;
   public successMessage: string;
 
   public login = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('')
+    email: new FormControl('', {
+      validators: [Validators.required, Validators.email],
+      updateOn: 'blur'
+    }),
+    password: new FormControl('', [Validators.required])
   });
 
   constructor(private _authService: AuthService) { }
 
-  ngOnInit() {
+  get email() { return this.login.get('email') }
+
+  get password() { return this.login.get('password') }
+
+  public onBlur() {
+    if (this.login.get('email').updateOn === 'blur') {
+      const value = this.login.get('email').value;
+      const newControl = new FormControl(value, {
+          validators: [Validators.required, Validators.email],
+          updateOn: "change"
+        });
+      this.login.setControl('email', newControl)
+    this.login.get('email').markAsTouched()
+    }
   }
 
   public onSubmit(value) {
