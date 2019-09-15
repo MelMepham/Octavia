@@ -5,7 +5,6 @@ import { Injectable } from "@angular/core";
 import {AngularFireAuth} from '@angular/fire/auth';
 import {User} from 'firebase';
 import {Router} from '@angular/router';
-import {errorComparator} from 'tslint/lib/verify/lintError';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +29,7 @@ export class AuthService {
       this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password)
       // TODO: route somewhere
         .then(res => {
+          console.log(this.user);
           resolve(res);
         }, err => {
           reject(err)

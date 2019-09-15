@@ -8,6 +8,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
+import { CanActivateWhenUserIsNotLoggedIn } from '../services/auth-guard.service';
 
 
 const routes: Routes = [
@@ -26,7 +27,10 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: 'src/app/login/login.module#LoginModule'
+    loadChildren: 'src/app/login/login.module#LoginModule',
+    canActivate: [
+      CanActivateWhenUserIsNotLoggedIn
+    ]
   }
 ];
 
@@ -47,7 +51,9 @@ const routes: Routes = [
   exports: [
     RouterModule
   ],
-  providers: [],
+  providers: [
+    CanActivateWhenUserIsNotLoggedIn
+  ],
   bootstrap: [
     AppComponent
    ]
