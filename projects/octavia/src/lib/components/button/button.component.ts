@@ -1,4 +1,4 @@
-import {Component, HostBinding, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, HostBinding, OnInit, Input, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'button[octButton]',
@@ -8,17 +8,19 @@ import {Component, HostBinding, OnInit, ViewEncapsulation} from '@angular/core';
 })
 export class ButtonComponent implements OnInit {
 
-  // get transparent(): boolean {return this._transparent;}
-// public transparent: boolean;
+  private _transparent: any;
 
-  // @Input('transparent')
-  // set setTransparent(value: boolean) {
-    // this.transparent = !value ? true : value;
-  // }
+  @Input()
+  public get transparent (): boolean {
+    return this._transparent;
+  }
+  public set transparent (_) {
+    this.transparentStyle = true;
+  }
 
-  // @HostBinding('class.oct-button__transparent')
-  // get setTransparent(): boolean {return this.transparent;}
-  // public transparent: boolean;
+  @HostBinding('class.oct-button__transparent')
+  public transparentStyle: Boolean = false;
+
 
   @HostBinding('class.oct-button') public isPureButton = true;
 

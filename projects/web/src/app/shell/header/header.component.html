@@ -57,15 +57,23 @@
     [ngClass]="isMobileMenuOpen ? 'header__grid-container-is-open-mobile':'header__grid-container-is-not-open-mobile'"
     class="header__grid-container-mobile">
     <a
+      routerLink="/home"
+      routerLinkActive="header__mobile-active-route">Home</a>
+    <a
+      routerLink="/blog"
+    routerLinkActive="header__mobile-active-route">Blog</a>
+    <a
+      routerLink="/fun"
+    routerLinkActive="header__mobile-active-route">Fun stuff</a>
+    <a
       routerLink="/about"
       routerLinkActive="header__mobile-active-route">About</a>
     <a
-      routerLink="/fun"
-      routerLinkActive="header__mobile-active-route">Fun stuff</a>
+      *ngIf="_authService.isLoggedIn()"
+      (click)="_authService.logout()"
+      class="header__logout-link">Logout</a>
     <a
-      routerLink="/blog"
-      routerLinkActive="header__mobile-active-route">Blog</a>
-    <a
-      routerLink="/home"
-      routerLinkActive="header__mobile-active-route">Home</a>
+      *ngIf="!_authService.isLoggedIn()"
+      routerLink="/login"
+      routerLinkActive="header__active-route">Login</a>
   </div>

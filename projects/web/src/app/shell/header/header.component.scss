@@ -77,14 +77,11 @@ app-header:host {
   display: grid;
   grid-template-columns: 60px auto;
   align-items: center;
-
 }
 
 .header__grid-container-is-open-mobile {
   transform: translateY(0);
   transition: transform 0.6s ease-in-out;
-
-
 }
 
 .header__grid-container-is-not-open-mobile {
@@ -97,7 +94,7 @@ app-header:host {
   display: block;
   width: 100%;
   position: absolute;
-  height: 190px;
+  height: 240px;
   background-color: var(--light-color);
   z-index: -1;
 
