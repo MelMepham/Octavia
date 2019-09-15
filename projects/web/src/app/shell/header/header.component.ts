@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +13,7 @@ export class HeaderComponent implements OnInit {
   public isMobileMenuOpen = false;
 
   constructor(
+    private _authService: AuthService,
     private _breakpointObserver: BreakpointObserver
   ) { }
 

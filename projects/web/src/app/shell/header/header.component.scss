@@ -102,6 +102,7 @@ app-header:host {
   z-index: -1;
 
   a {
+    cursor: pointer;
     padding-top: 16px;
     padding-bottom: 16px;
     display: block;
@@ -120,3 +121,8 @@ app-header:host {
     border-left: 8px var(--dark-color) solid;
   }
 }
+
+.header__logout-link {
+  cursor: pointer;
+}
+

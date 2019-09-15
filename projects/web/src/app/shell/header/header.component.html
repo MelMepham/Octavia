@@ -12,18 +12,26 @@
       class="header__grid-container-items">
       <div
         class="header__grid-container-items-link-list">
-      <a
-        routerLink="/about"
-        routerLinkActive="header__active-route">About</a>
-      <a
-        routerLink="/fun"
-        routerLinkActive="header__active-route">Fun stuff</a>
-      <a
-        routerLink="/blog"
-        routerLinkActive="header__active-route">Blog</a>
-      <a
-        routerLink="/home"
-        routerLinkActive="header__active-route">Home</a>
+        <a
+          *ngIf="_authService.isLoggedIn()"
+          (click)="_authService.logout()"
+          class="header__logout-link">Logout</a>
+        <a
+          *ngIf="!_authService.isLoggedIn()"
+          routerLink="/login"
+          routerLinkActive="header__active-route">Login</a>
+        <a
+          routerLink="/about"
+          routerLinkActive="header__active-route">About</a>
+        <a
+          routerLink="/fun"
+          routerLinkActive="header__active-route">Fun stuff</a>
+        <a
+          routerLink="/blog"
+          routerLinkActive="header__active-route">Blog</a>
+        <a
+          routerLink="/home"
+          routerLinkActive="header__active-route">Home</a>
     </div>
   </div>
 </header>

@@ -49,4 +49,9 @@
       Submit
     </button>
   </form>
+  <div
+    *ngIf="this.errorMessage"
+    class="login__errorMessage">
+    {{ this.errorMessage }}
+  </div>
 </div>

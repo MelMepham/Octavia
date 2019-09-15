@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -11,7 +12,6 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent {
 
   public errorMessage: string;
-  public successMessage: string;
 
   public login = new FormGroup({
     email: new FormControl('', {
@@ -21,7 +21,7 @@ export class LoginComponent {
     password: new FormControl('', [Validators.required])
   });
 
-  constructor(private _authService: AuthService) { }
+  constructor(private _authService: AuthService, private _router: Router) { }
 
   get email() { return this.login.get('email') }
 
@@ -34,8 +34,8 @@ export class LoginComponent {
           validators: [Validators.required, Validators.email],
           updateOn: "change"
         });
-      this.login.setControl('email', newControl)
-    this.login.get('email').markAsTouched()
+      this.login.setControl('email', newControl);
+    this.login.get('email').markAsTouched();
     }
   }
 
@@ -44,11 +44,16 @@ export class LoginComponent {
       .then(res => {
         console.log(res);
         this.errorMessage = "";
-        this.successMessage = "Your account has been created";
+        //TODO: route to the home page with a logged in.
+        this.login.reset();
+        this._router.navigate(['./home'])
       }, err => {
         console.log(err);
-        this.errorMessage = err.message;
-        this.successMessage = "";
+        if (err.code === 'auth/internal-error') {
+          this.errorMessage = "Something went wrong on our side, please try again.";
+        } else {
+          this.errorMessage = "Something went wrong. Please make sure your details are correct and try again";
+        }
       })
   }
 

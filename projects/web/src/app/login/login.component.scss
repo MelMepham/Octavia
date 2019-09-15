@@ -2,6 +2,8 @@ app-login:host {
   display:block;
   padding-top: 100px;
   color: var(--dark-color);
+
+  --error-color: #B22222;
 }
 
 .login__container {
@@ -27,11 +29,16 @@ app-login:host {
 }
 
 .login__input--invalid {
-  border: 2px #B22222 solid;
+  border: 2px var(--error-color) solid;
 }
 .login__input--invalid-text {
   margin-bottom: 12px;
-  color: #B22222;
+  color: var(--error-color);
+}
+
+.login__errorMessage {
+  padding-top: 18px;
+  color: var(--error-color)
 }
 
 button {
