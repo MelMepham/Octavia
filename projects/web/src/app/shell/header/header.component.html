@@ -68,10 +68,10 @@
     <a
       routerLink="/about"
       routerLinkActive="header__mobile-active-route">About</a>
-    <a
+    <button
       *ngIf="_authService.isLoggedIn()"
       (click)="_authService.logout()"
-      class="header__logout-link">Logout</a>
+      class="header__logout-link">Logout</button>
     <a
       *ngIf="!_authService.isLoggedIn()"
       routerLink="/login"

@@ -1,5 +1,4 @@
 <div
-  *ngIf="!_authService.isLoggedIn()"
   class="login__container">
   <h1>
     LOGIN
@@ -55,20 +54,9 @@
     class="login__errorMessage">
     {{ this.errorMessage }}
   </div>
-</div>
-
-<div
-  *ngIf="_authService.isLoggedIn()"
-  class="login__container">
-  <h1>
-    YOU ARE ALREADY LOGGED IN
-  </h1>
-  <h2>
-    IF YOU ARE LOGGED IN AS SOMEONE ELSE PLEASE LOG OUT.
-  </h2>
   <button
     octButton
-    (click)="this._authService.logout()">
-    Log out
+    transparent>
+    Forgot your password?
   </button>
 </div>
