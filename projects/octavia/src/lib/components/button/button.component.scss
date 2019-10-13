@@ -45,5 +45,12 @@
         background: none;
         transform: translateY(0);
     }
+    &:active {
+        box-shadow: none;
+        background-color: transparent;
+    }
+    &:disabled {
+        background-color: transparent;
+    }
 }
 
