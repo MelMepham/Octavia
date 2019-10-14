@@ -1,3 +1,12 @@
-<Oct-overlay>
-    <p>modal works!</p>
+<Oct-overlay
+    *ngIf="isOpen">
+    <div
+        class="oct-modal-body">
+        <p>modal works!</p>
+        <button
+            (click)="close()">
+            Close modal
+        </button>
+    </div>
 </Oct-overlay>
+

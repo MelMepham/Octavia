@@ -1,10 +1,11 @@
 Oct-overlay:host {
   display: block;
-  z-index: 100;
+  position: absolute;
+  z-index: 1;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: #B22222;
+  background: rgba(0, 0, 0, 0.8);
 
 }
