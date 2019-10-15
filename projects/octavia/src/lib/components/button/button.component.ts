@@ -2,14 +2,13 @@ import {Component, HostBinding, OnInit, Input, ViewEncapsulation} from '@angular
 
 @Component({
   selector: 'button[octButton]',
-  template: `<ng-content></ng-content>`,
+  templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class ButtonComponent implements OnInit {
 
   private _transparent: any;
-
   @Input()
   public get transparent (): boolean {
     return this._transparent;

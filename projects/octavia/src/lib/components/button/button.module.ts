@@ -7,7 +7,7 @@ import { CommonModule } from "@angular/common";
       ButtonComponent
   ],
   imports: [
-    CommonModule
+      CommonModule,
   ],
   exports: [
       ButtonComponent
