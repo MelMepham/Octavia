@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import {Router} from '@angular/router';
+import { ModalService } from "@octavia/lib/services/modal.service";
 
 
 @Component({
@@ -12,6 +13,7 @@ import {Router} from '@angular/router';
 export class LoginComponent {
 
   public errorMessage: string;
+  public isModalOpen = false;
 
   public login = new FormGroup({
     email: new FormControl('', {
@@ -21,7 +23,10 @@ export class LoginComponent {
     password: new FormControl('', [Validators.required])
   });
 
-  constructor(private _authService: AuthService, private _router: Router) { }
+  constructor(
+    private _authService: AuthService,
+    private _router: Router,
+    private _modalService: ModalService ) { }
 
   get email() { return this.login.get('email') }
 
@@ -55,6 +60,10 @@ export class LoginComponent {
           this.errorMessage = "Something went wrong. Please make sure your details are correct and try again";
         }
       })
+  }
+
+  public openModal(id: string) {
+      this._modalService.open(id);
   }
 
 }

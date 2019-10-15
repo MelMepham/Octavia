@@ -55,8 +55,13 @@
     {{ this.errorMessage }}
   </div>
   <button
+    (click)="openModal('forgotPasswordModal')"
     octButton
     transparent>
     Forgot your password?
   </button>
 </div>
+
+<Oct-modal
+  id="forgotPasswordModal">
+</Oct-modal>

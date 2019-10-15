@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login.component';
 import {RouterModule} from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ButtonModule } from 'octavia/src/public-api'
+import { ButtonModule, ModalModule } from 'octavia/src/public-api'
 
 @NgModule({
   declarations: [
@@ -13,6 +13,7 @@ import { ButtonModule } from 'octavia/src/public-api'
     CommonModule,
     ReactiveFormsModule,
     ButtonModule,
+    ModalModule,
     RouterModule.forChild([{
       path: '',
       component: LoginComponent
