@@ -38,10 +38,10 @@ export class ModalComponent implements OnInit, OnDestroy {
     this._element.remove();
   }
 
-  public open() {
+  public open (): void {
     this.isOpen = true;
   }
-  public close() {
+  public close (): void {
     this.isOpen = false;
   }
 

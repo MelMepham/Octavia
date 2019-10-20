@@ -1,17 +1,19 @@
 <Oct-overlay
     *ngIf="isOpen">
     <div
-        class="oct-modal-body">
+        class="oct-modal-container">
+        <div
+            class="oct-modal-header">
+        <ng-content
+            select="Oct-modal-header"></ng-content>
         <button
-            octButton>
+            (click)="close()"
+            octButton
+            transparent>
             <i-feather name="X"></i-feather>
-            Hello
         </button>
-        <p>modal works!</p>
-        <button
-            (click)="close()">
-            Close modal
-        </button>
+        </div>
+        <ng-content></ng-content>
     </div>
 </Oct-overlay>
 
