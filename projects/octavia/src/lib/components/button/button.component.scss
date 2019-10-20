@@ -1,6 +1,7 @@
 @import url('../../styles/env.scss');
 
 .oct-button {
+    display: inline-block;
     background-color: var(--btn-primary-100);
     color: var(--btn-primary-700);
     padding: 8px 6px 6px 6px;
@@ -54,8 +55,8 @@
     }
 }
 
-.oct-button__text {
-
-
+.oct-button__svg {
+    display: inline-block;
+    vertical-align: middle;
 }
 
