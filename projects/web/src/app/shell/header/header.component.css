@@ -37,33 +37,27 @@ app-header:host {
   grid-template-columns: 100%;
   align-items: center;
   right: 24px;
-
-  a {
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-top: 24px;
-    text-decoration: none;
-    color: var(--dark-color);
-    border-bottom: 8px var(--light-color) solid;
-  }
-
-  a:hover {
-    border-bottom: 8px var(--dark-color) solid;
-  }
-
-  a.header__active-route {
-    color: var(--dark-color);
-    border-bottom: 8px var(--dark-color) solid;
-  }
-
+}
+.header__grid--container-items a {
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 24px;
+  text-decoration: none;
+  color: var(--dark-color);
+  border-bottom: 8px var(--light-color) solid;
+}
+.header__grid--container-items a:hover {
+  border-bottom: 8px var(--dark-color) solid;
+}
+.header__grid--container-items a.header__active-route {
+  color: var(--dark-color);
+  border-bottom: 8px var(--dark-color) solid;
 }
 
-.header__logo {
-  ::ng-deep .logo{
-    fill:var(--dark-color);
-    width: 45px;
-    height: 45px;
-  }
+.header__logo ::ng-deep .logo {
+  fill: var(--dark-color);
+  width: 45px;
+  height: 45px;
 }
 
 .header__grid-logo-mobile {
@@ -84,33 +78,31 @@ app-header:host {
 }
 
 .header__grid-container-mobile {
-  opacity: .9;
+  opacity: 0.9;
   width: 100%;
   background-color: var(--light-color);
   z-index: -1;
-
-  a {
-    cursor: pointer;
-    display: block;
-    padding-left: 24px;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    text-decoration: none;
-    color: var(--dark-color);
-    border-left: 8px var(--light-color) solid;
-  }
-
-  a:hover {
-    border-left: 8px var(--dark-color) solid;
-  }
-
-  a.header__mobile-active-route {
-    color: var(--dark-color);
-    border-left: 8px var(--dark-color) solid;
-  }
+}
+.header__grid-container-mobile a {
+  cursor: pointer;
+  display: block;
+  padding-left: 24px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  text-decoration: none;
+  color: var(--dark-color);
+  border-left: 8px var(--light-color) solid;
+}
+.header__grid-container-mobile a:hover {
+  border-left: 8px var(--dark-color) solid;
+}
+.header__grid-container-mobile a.header__mobile-active-route {
+  color: var(--dark-color);
+  border-left: 8px var(--dark-color) solid;
 }
 
 .header__logout-link {
   cursor: pointer;
 }
 
+/*# sourceMappingURL=header.component.css.map */

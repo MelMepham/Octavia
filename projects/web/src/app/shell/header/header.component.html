@@ -1,15 +1,15 @@
 <header
-  *ngIf="!isSmall"
-  class="header__grid-container">
+    *ngIf="!isSmall"
+    class="header__grid-container">
     <div
-      *ngIf="!isSmall"
-      class="header__grid-logo">
+      class="header__grid header__grid--logo-container">
       <app-logo
         class="header__logo"></app-logo>
       Melissa Mepham
     </div>
+
     <div
-      class="header__grid-container-items">
+      class="header__grid header__grid--container-items">
       <div
         class="header__grid-container-items-link-list">
         <a
@@ -38,9 +38,15 @@
 
 <header
   *ngIf="isSmall"
-  class="header__mobile">
+  class="header__grid-container">
+<!--  <div-->
+<!--    class="header__grid header__grid&#45;&#45;logo-container">-->
+<!--    <app-logo-->
+<!--      class="header__logo"></app-logo>-->
+<!--    Melissa Mepham-->
+<!--  </div>-->
   <div
-    class="header__grid-logo-mobile">
+    class="header__grid header__grid--logo-container">
     <button
       octButton
       transparent

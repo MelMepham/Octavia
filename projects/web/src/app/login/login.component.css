@@ -29,6 +29,7 @@ app-login:host {
 .login__input--invalid {
   border: 2px var(--error-color) solid;
 }
+
 .login__input--invalid-text {
   margin-bottom: 12px;
   color: var(--error-color);
@@ -36,7 +37,7 @@ app-login:host {
 
 .login__errorMessage {
   padding-top: 18px;
-  color: var(--error-color)
+  color: var(--error-color);
 }
 
 button {
@@ -46,5 +47,6 @@ button {
   --btn-primary-100: var(--light-color);
   --btn-primary-300: #4ADD8C;
   --btn-primary-700: var(--dark-color);
-
 }
+
+/*# sourceMappingURL=login.component.css.map */
